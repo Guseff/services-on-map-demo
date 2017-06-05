@@ -10,16 +10,17 @@ import {
 import registerServiceWorker from './registerServiceWorker';
 
 import App from './containers/App';
+import About from './components/About';
+import Header from './containers/Header';
 import './index.css';
 
 render(
   <Router>
-    <Route exact path="/" component={App}>
-      {/*<IndexRoute component={Home} />
-      <Route path="article/:id" component={Article} />
-      <Route path="about" component={About} />
-      <Route path="login" component={Login} />*/}
-    </Route>
+    <div>
+      <Header />
+      <Route exact path="/" component={App} />
+      <Route path="/about" component={About} />
+    </div>
   </Router>,
   document.getElementById('root'),
 );
