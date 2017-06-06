@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import logo from '../../assets/logo.svg';
+
+import LMap from '../../containers/LMap';
 import '../../assets/App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <LMap />
       </div>
     );
   }
