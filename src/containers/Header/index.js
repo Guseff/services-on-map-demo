@@ -8,7 +8,7 @@ class Header extends Component {
     return (
       <div className="head">
         <div className="logo">
-          Welcome to App
+          Welcome to Brest service offer App
         </div>
         <div className="menu">
           <ul>

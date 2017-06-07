@@ -7,16 +7,16 @@ class LMap extends Component {
   constructor() {
     super();
     this.state = {
-      lat: 51.505,
-      lng: -0.09,
-      zoom: 13,
+      lat: 52.0929,
+      lng: 23.6931,
+      zoom: 15,
     };
   }
 
   render() {
     const position = [this.state.lat, this.state.lng];
     return (
-      <Map center={position} zoom={13}>
+      <Map center={position} zoom={this.state.zoom}>
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
