@@ -12,7 +12,7 @@ class LMarker extends Component {
     const position = this.props.position;
     return (
       <Marker position={position}>
-        <LPopup title={'Wau!'} text={'bla-bla-bla'} />
+        <LPopup title={'Wau'} text={'Bla-bla-bla'} />
       </Marker>
     );
   }
