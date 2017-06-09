@@ -24,7 +24,10 @@ class LMap extends Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
 
-        <LMarker position={markers[0]} />
+        {markers.map(
+          (marker, index) =>
+            <LMarker position={marker} />
+        )}
       </Map>
     );
   }

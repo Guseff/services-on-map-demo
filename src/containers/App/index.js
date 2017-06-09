@@ -10,9 +10,9 @@ class App extends Component {
     super(props);
 
   }
-  
+
   render() {
-    const markers = this.props.markers;
+    const { markers } = this.props;
     return (
       <div className="App">
         <LMap markers={markers} />

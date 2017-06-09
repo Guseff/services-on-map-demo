@@ -24,13 +24,15 @@ const store = configureStore();
 // );
 
 render(
-  <Router>
-    <div>
-      <Header />
-      <Route exact path="/" component={App} />
-      <Route path="/about" component={About} />
-    </div>
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <div>
+        <Header />
+        <Route exact path="/" component={App} />
+        <Route path="/about" component={About} />
+      </div>
+    </Router>
+  </Provider>,
   document.getElementById('root'),
 );
 registerServiceWorker();
