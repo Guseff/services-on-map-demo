@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import articles from './markers';
+import markers from './markers';
 
 export default combineReducers({
   markers,

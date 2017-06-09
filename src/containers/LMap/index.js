@@ -16,13 +16,15 @@ class LMap extends Component {
 
   render() {
     const position = [this.state.lat, this.state.lng];
+    const markers = this.props.markers;
     return (
       <Map center={position} zoom={this.state.zoom}>
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        <LMarker position={position} />
+
+        <LMarker position={markers[0]} />
       </Map>
     );
   }

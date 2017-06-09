@@ -7,7 +7,9 @@ class LPopup extends Component {
     const text = this.props.text;
     return (
       <Popup>
-        {title}<br/>{text}
+        <div>
+          <b>{title}</b><br/>{text}
+        </div>
       </Popup>
     );
   }
