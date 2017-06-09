@@ -1,0 +1,1 @@
+export const SHOW_MARKER = 'SHOW_MARKER';

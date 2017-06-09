@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer } from 'react-leaflet';
+import LMarker from '../LMarker';
 
 import './style.css';
 
@@ -21,11 +22,7 @@ class LMap extends Component {
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        {/*<Marker position={position}>
-          <Popup>
-            <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
-          </Popup>
-        </Marker>*/}
+        <LMarker position={position} />
       </Map>
     );
   }
