@@ -7,18 +7,18 @@ import './style.css';
 class LMap extends Component {
   constructor() {
     super();
-    this.state = {
-      lat: 52.0929,
-      lng: 23.6931,
-      zoom: 15,
-    };
+    // this.state = {
+    //   lat: 52.0929,
+    //   lng: 23.6931,
+    //   zoom: 15,
+    // };
   }
 
   render() {
-    const position = [this.state.lat, this.state.lng];
+    const position = this.props.userCoords;
     const markers = this.props.markers;
     return (
-      <Map center={position} zoom={this.state.zoom}>
+      <Map center={position} zoom={13}>
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -28,6 +28,7 @@ class LMap extends Component {
           (marker, index) =>
             <LMarker key={index} position={marker} />
         )}
+        <LMarker position={position} />
       </Map>
     );
   }

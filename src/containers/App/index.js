@@ -13,10 +13,10 @@ class App extends Component {
   }
 
   render() {
-    const { markers } = this.props;
+    const { markers, userCoords } = this.props;
     return (
       <div className="App">
-        <LMap markers={markers} />
+        <LMap markers={markers} userCoords={userCoords} />
       </div>
     );
   }
@@ -25,6 +25,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     markers: state.markers.markers,
+    userCoords: state.markers.userCoords,
   };
 }
 
@@ -37,6 +38,7 @@ function mapDispatchToProps(dispatch) {
 
 App.propTypes = {
   markers: PropTypes.array.isRequired,
+  userCoords: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
