@@ -13,10 +13,7 @@ export function showMarker(value) {
 }
 
 export function getUserPosition() {
-  return dispatch => dispatch(getPosition({ enableHighAccuracy: true }))
-    // .then(
-    //   res => console.log(res.coords.latitude, res.coords.longitude),
-    // )
+  return dispatch => dispatch(getPosition({ enableHighAccuracy: true }    ))
     .then(
       (res) => {
         console.log(res.coords.latitude);
