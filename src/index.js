@@ -6,25 +6,18 @@ import {
   Route,
 } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
-import { getPosition } from 'redux-effects-geolocation';
 
 import App from './containers/App';
 import About from './components/About';
 import Header from './containers/Header';
 import configureStore from './store/configureStore';
+import { getUserPosition } from './actions/MarkerActions';
 
 import './index.css';
 
 const store = configureStore();
 
-store.dispatch(getPosition())
-  .then(
-    res => console.log(res.coords.latitude, res.coords.longitude),
-  )
-
-// store.dispatch(
-//   showMarkers(),
-// );
+store.dispatch(getUserPosition());
 
 render(
   <Provider store={store}>
