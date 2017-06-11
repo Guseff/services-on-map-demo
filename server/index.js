@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const port = 3001;
-
+const bodyParser = require('body-parser');
 const MarkerModel = require('./db').MarkersModel;
 
 app.use(express.static('../public/'));
 
 // parse application/json
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 // MongoDB
 // Markers
@@ -33,7 +33,7 @@ app.post('/markers', (req, res) => {
   marker.save((err) => {
     if (!err) {
       console.log('marker created');
-      return res.send({ status: 'OK', article });
+      return res.send({ status: 'OK', marker });
     }
     console.log(err);
     if (err.name == 'ValidationError') {

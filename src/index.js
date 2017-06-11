@@ -11,15 +11,13 @@ import App from './containers/App';
 import About from './components/About';
 import Header from './containers/Header';
 import configureStore from './store/configureStore';
-import { getUserPosition, createMarker } from './actions/MarkerActions';
+import { getUserPosition } from './actions/MarkerActions';
 
 import './index.css';
 
 const store = configureStore();
 
 store.dispatch(getUserPosition());
-store.dispatch(createMarker('ff', 'ff', 'jhgfhg'));
-
 render(
   <Provider store={store}>
     <Router>
