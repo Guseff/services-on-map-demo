@@ -1,1 +1,2 @@
 export const SHOW_MARKER = 'SHOW_MARKER';
+export const GET_USER_COORDS = 'GET_USER_COORDS';

@@ -26,7 +26,7 @@ class LMap extends Component {
 
         {markers.map(
           (marker, index) =>
-            <LMarker position={marker} />
+            <LMarker key={index} position={marker} />
         )}
       </Map>
     );
