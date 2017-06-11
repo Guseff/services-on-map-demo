@@ -19,7 +19,6 @@ export default function markers(state = initialState, action) {
       return { ...state };
 
     case GET_USER_COORDS:
-      console.log('qqqqqq');
       return { ...state, userCoords: action.payload }
 
     default:

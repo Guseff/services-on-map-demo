@@ -23,4 +23,24 @@ export function getUserPosition() {
         });
       }
     )
-} 
+}
+
+export function createMarker(title, author, text, coords) {
+  const param =  'http://localhost:3000/markers/';
+  const body = {
+    title: title,
+    author: author,
+    text: text,
+    coords: coords,
+  };
+
+  return dispatch =>
+    fetch(param, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      ...(Object.keys(body).length ? { body: JSON.stringify(body) } : {}),
+    });
+}
