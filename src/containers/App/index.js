@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import LMap from '../../containers/LMap';
+import { onClickMenu } from '../../actions/MarkerActions'
 import '../../assets/App.css';
 
 class App extends Component {
@@ -13,10 +14,10 @@ class App extends Component {
   }
 
   render() {
-    const { markers, userCoords } = this.props;
+    const { markers, userCoords, onClickMenu } = this.props;
     return (
       <div className="App">
-        <LMap markers={markers} userCoords={userCoords} />
+        <LMap markers={markers} userCoords={userCoords} onClickMenu={onClickMenu} />
       </div>
     );
   }
@@ -31,8 +32,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // logOut: bindActionCreators(LogRegActions.logOut, dispatch),
-    // checkLogin: bindActionCreators(LogRegActions.checkLogin, dispatch),
+    onClickMenu: bindActionCreators(onClickMenu, dispatch),
   };
 }
 

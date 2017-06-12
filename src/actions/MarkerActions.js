@@ -10,7 +10,6 @@ export function getUserPosition() {
   return dispatch => dispatch(getPosition({ enableHighAccuracy: true }    ))
     .then(
       (res) => {
-        console.log(res.coords.latitude);
         dispatch({
           type: GET_USER_COORDS,
           payload: [res.coords.latitude, res.coords.longitude],
@@ -25,11 +24,10 @@ export function getMarkersList() {
     fetch(param)
       .then(resp => resp.json())
       .then(resp => {
-        console.log(resp[0]);
-        // dispatch({
-        //   type: GET_MARKERS,
-        //   payload: resp,
-        // });
+        dispatch({
+          type: GET_MARKERS,
+          payload: resp,
+        });
       });
 }
 
@@ -51,4 +49,8 @@ export function createMarker(title, author, text, coords) {
       },
       ...(Object.keys(body).length ? { body: JSON.stringify(body) } : {}),
     });
+}
+
+export function onClickMenu(param) {
+  console.log('Click', param);
 }
