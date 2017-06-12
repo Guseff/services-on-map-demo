@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const port = 3001;
 const bodyParser = require('body-parser');
 const MarkerModel = require('./db').MarkersModel;
 
 app.use(express.static('../public/'));
+app.use(cors());
 
 // parse application/json
 app.use(bodyParser.json());

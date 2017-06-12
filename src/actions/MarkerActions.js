@@ -1,16 +1,10 @@
 import { getPosition } from 'redux-effects-geolocation';
 import {
-  SHOW_MARKER,
+  GET_MARKERS,
   GET_USER_COORDS,
 } from '../constants/constants';
 
-export function showMarker(value) {
-  return dispatch =>
-    dispatch({
-      type: SHOW_MARKER,
-      payload: value,
-    });
-}
+const markersURL =  'http://localhost:3001/markers/';
 
 export function getUserPosition() {
   return dispatch => dispatch(getPosition({ enableHighAccuracy: true }    ))
@@ -25,8 +19,22 @@ export function getUserPosition() {
     )
 }
 
+export function getMarkersList() {
+  const param = markersURL;
+  return dispatch =>
+    fetch(param)
+      .then(resp => resp.json())
+      .then(resp => {
+        console.log(resp[0]);
+        // dispatch({
+        //   type: GET_MARKERS,
+        //   payload: resp,
+        // });
+      });
+}
+
 export function createMarker(title, author, text, coords) {
-  const param =  'http://localhost:3000/markers/';
+  const param =  markersURL;
   const body = {
     title: title,
     author: author,

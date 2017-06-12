@@ -1,25 +1,21 @@
 import {
-  SHOW_MARKER,
+  GET_MARKERS,
   GET_USER_COORDS,
 } from '../constants/constants';
 
 const initialState = {
-  markers: [
-    [52.0929, 23.6931],
-    [52.0909, 23.6931],
-    [52.0929, 23.6901],
-  ],
+  markers: [],
   userCoords: [59.09, 23.7],
 };
 
 export default function markers(state = initialState, action) {
   switch (action.type) {
 
-    case SHOW_MARKER:
-      return { ...state };
+    case GET_MARKERS:
+      return { ...state, markers: action.payload };
 
     case GET_USER_COORDS:
-      return { ...state, userCoords: action.payload }
+      return { ...state, userCoords: action.payload };
 
     default:
       return state;
