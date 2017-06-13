@@ -15,8 +15,9 @@ class MapMenu extends Component {
   }
 
   render() {
-    const showModal = this.props;
+    const { showModal } = this.props;
     return (
+      <div>
       <ReactModal 
         isOpen={showModal}
         contentLabel="Minimal Modal Example"
@@ -25,6 +26,7 @@ class MapMenu extends Component {
       >
         <button onClick={this.handleCloseModal}>Close Modal</button>
       </ReactModal>
+      </div>
     );
   }
 }

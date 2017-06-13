@@ -30,7 +30,7 @@ function mapStateToProps(state) {
     markers: state.markers.markers,
     userCoords: state.map.userCoords,
     clickCoords: state.map.clickCoords,
-    closeModal: state.map.closeModal,
+    showModal: state.map.showModal,
   };
 }
 
