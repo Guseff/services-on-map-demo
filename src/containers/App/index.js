@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import LMap from '../../containers/LMap';
 import MapMenu from '../MapMenu';
-import { clickOnMap } from '../../actions/MarkerActions'
+import { clickOnMap, closeModal } from '../../actions/MarkerActions'
 import './style.css';
 
 class App extends Component {
@@ -15,11 +15,11 @@ class App extends Component {
   }
 
   render() {
-    const { markers, userCoords, clickCoords, clickOnMap } = this.props;
+    const { markers, userCoords, clickCoords, clickOnMap, showModal, closeModal } = this.props;
     return (
       <div className="App">
         <LMap markers={markers} userCoords={userCoords} clickOnMap={clickOnMap} />
-        {clickCoords.length ? <MapMenu/> : null}
+        <MapMenu closeModal={closeModal} showModal={showModal} />
       </div>
     );
   }
@@ -30,12 +30,14 @@ function mapStateToProps(state) {
     markers: state.markers.markers,
     userCoords: state.map.userCoords,
     clickCoords: state.map.clickCoords,
+    closeModal: state.map.closeModal,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     clickOnMap: bindActionCreators(clickOnMap, dispatch),
+    closeModal: bindActionCreators(closeModal, dispatch),
   };
 }
 
@@ -43,6 +45,10 @@ App.propTypes = {
   markers: PropTypes.array.isRequired,
   userCoords: PropTypes.array.isRequired,
   clickCoords: PropTypes.array.isRequired,
+  showModal: PropTypes.bool.isRequired,
+
+  clickOnMap: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

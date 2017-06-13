@@ -3,6 +3,7 @@ import {
   GET_MARKERS,
   GET_USER_COORDS,
   PUT_CLICK_COORDS,
+  SHOW_MODAL,
 } from '../constants/constants';
 
 const markersURL =  'http://localhost:3001/markers/';
@@ -60,5 +61,17 @@ export function clickOnMap(param) {
       .then(() => dispatch({
         type: PUT_CLICK_COORDS,
         payload: coords,
+      }))
+      .then(() => dispatch({
+        type: SHOW_MODAL,
+        payload: true,
       }));
+}
+
+export function closeModal() {
+  return dispatch =>
+    dispatch({
+      type: SHOW_MODAL,
+      payload: false,
+    });
 }
