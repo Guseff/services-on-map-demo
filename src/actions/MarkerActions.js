@@ -55,9 +55,7 @@ export function createMarker(title, author, text, coords) {
 
 export function clickOnMap(param) {
   const coords = [param.lat, param.lng];
-  return createMarker('NEW', 'Vasily', 'test', coords);
-  // return dispatch => dispatch({
-  //   type: PUT_CLICK_COORDS,
-  //   payload: coords,
-  // }); 
+  return dispatch =>
+    dispatch(createMarker('f', 'j', 'h', coords))
+      .then(() => dispatch(getMarkersList()));
 }
