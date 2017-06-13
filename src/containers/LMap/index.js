@@ -11,8 +11,8 @@ class LMap extends Component {
     this.onMapClick = this.onMapClick.bind(this);
   }
 
-  onMapClick() {
-    this.props.onClickMenu();
+  onMapClick(e) {
+    this.props.clickOnMap(e.latlng);
   }
 
   render() {

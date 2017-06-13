@@ -1,2 +1,3 @@
 export const GET_MARKERS = 'GET_MARKERS';
 export const GET_USER_COORDS = 'GET_USER_COORDS';
+export const PUT_CLICK_COORDS = 'PUT_CLICK_COORDS';

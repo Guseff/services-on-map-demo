@@ -2,6 +2,7 @@ import { getPosition } from 'redux-effects-geolocation';
 import {
   GET_MARKERS,
   GET_USER_COORDS,
+  PUT_CLICK_COORDS,
 } from '../constants/constants';
 
 const markersURL =  'http://localhost:3001/markers/';
@@ -40,6 +41,7 @@ export function createMarker(title, author, text, coords) {
     coords: coords,
   };
 
+  console.log('Create', coords);
   return dispatch =>
     fetch(param, {
       method: 'POST',
@@ -51,6 +53,11 @@ export function createMarker(title, author, text, coords) {
     });
 }
 
-export function onClickMenu(param) {
-  console.log('Click', param);
+export function clickOnMap(param) {
+  const coords = [param.lat, param.lng];
+  return createMarker('NEW', 'Vasily', 'test', coords);
+  // return dispatch => dispatch({
+  //   type: PUT_CLICK_COORDS,
+  //   payload: coords,
+  // }); 
 }
