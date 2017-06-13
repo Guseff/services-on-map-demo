@@ -5,6 +5,7 @@ import {
 
 const initialState = {
   markers: [],
+  menuPosition: [52.1547676671373, 23.6858367919922],
 };
 
 export default function markers(state = initialState, action) {

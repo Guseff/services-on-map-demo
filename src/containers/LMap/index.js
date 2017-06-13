@@ -18,6 +18,8 @@ class LMap extends Component {
   render() {
     const position = this.props.userCoords;
     const markers = this.props.markers;
+    const menuPosition = this.props.menuPosition;
+
     return (
       <Map center={position} zoom={13} onClick={this.onMapClick}>
         <TileLayer
