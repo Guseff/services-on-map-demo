@@ -3,11 +3,28 @@
     top: 10%;
     left: 10%;
     right: 10%;
-    bottom: 10%;
+    bottom: 30%;
     background-color: rgba(255, 255, 255, 1);
     border: 2px solid #54ACD2;
-    
     border-radius: 15px;
+    outline: none;
+  }
+
+  .Modal button {
+    float: right;
+    height: 24px;
+    width: 24px;
+    margin: 6px;
+    cursor: pointer;
+    background-color: #FFF;
+    border: none; 
+    padding: 0;
+    outline: none;
+  }
+
+  .Modal button img {
+    height: 100%;
+    width: 100%;
   }
 
   .Overlay {

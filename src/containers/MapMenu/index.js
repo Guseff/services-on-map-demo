@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
+import NewMarkerForm from '../NewMarkerForm';
 
 import './style.css';
 
@@ -24,7 +25,8 @@ class MapMenu extends Component {
         className="Modal"
         overlayClassName="Overlay"
       >
-        <button onClick={this.handleCloseModal}>Close Modal</button>
+        <button onClick={this.handleCloseModal}><img src='blue-close-sm.png' /></button>
+        <NewMarkerForm />
       </ReactModal>
       </div>
     );
