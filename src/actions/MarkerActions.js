@@ -38,13 +38,14 @@ export function getMarkersList() {
       });
 }
 
-export function createMarker(title, author, text, coords) {
+export function createMarker(title, author, cost, text, coords) {
   const param =  markersURL;
   const body = {
     title: title,
-    author: author,
+    name: author,
     text: text,
     coords: coords,
+    cost: cost,
   };
 
   return dispatch =>
@@ -122,13 +123,14 @@ export function changeText(value) {
     });
 }
 
-export function regNewTask(name, title, cost, text) {
-  const body = {
-    name: name,
-    title: title,
-    cost: cost,
-    text: text,
-  };
+export function regNewTask(title, name, cost, text, coords) {
+  // const body = {
+  //   name: name,
+  //   title: title,
+  //   cost: cost,
+  //   text: text,
+  //   coords: coords,
+  // };
 
 // TODO: checking fields for appropriate conditions !!!
 
@@ -152,14 +154,8 @@ export function regNewTask(name, title, cost, text) {
   // }
 
   return dispatch =>
-    fetch(markersURL, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      ...(Object.keys(body).length ? { body: JSON.stringify(body) } : {}),
-    })
+    dispatch(createMarker(title, name, cost, text, coords))
+      .then(() => dispatch(getMarkersList()))
       .then(() => dispatch(changeName('')))
       .then(() => dispatch(changeTitle('')))
       .then(() => dispatch(changeCost('')))

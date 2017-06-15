@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import LMap from '../../containers/LMap';
 import MapMenu from '../MapMenu';
-import { clickOnMap, closeModal } from '../../actions/MarkerActions'
+import { clickOnMap, closeModal } from '../../actions/MarkerActions';
 import './style.css';
 
 class App extends Component {

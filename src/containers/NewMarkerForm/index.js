@@ -1,4 +1,15 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import {
+  changeName,
+  changeTitle,
+  changeCost,
+  changeText,
+  regNewTask,
+} from '../../actions/MarkerActions'
 
 import './style.css';
 
@@ -14,19 +25,20 @@ class NewMarkerForm extends Component {
   }
 
   nameChange(e) {
-    
+    this.props.changeName(e.target.value);
   }
   titleChange(e) {
-
+    this.props.changeTitle(e.target.value);
   }
   textChange(e) {
-
+    this.props.changeText(e.target.value);
   }
   costChange(e) {
-
+    this.props.changeCost(e.target.value);
   }
   handleSubmitForm() {
-    
+    this.props.regNewTask('1', '2', 4, '3', this.props.clickCoords);
+    this.props.handleCloseModal();
   }
 
   render() {
@@ -66,4 +78,24 @@ class NewMarkerForm extends Component {
   }
 }
 
-export default NewMarkerForm;
+function mapStateToProps(state) {
+  return {
+    clickCoords: state.map.clickCoords,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    changeName: bindActionCreators(changeName, dispatch),
+    changeTitle: bindActionCreators(changeTitle, dispatch),
+    changeText: bindActionCreators(changeText, dispatch),
+    changeCost: bindActionCreators(changeCost, dispatch),
+    regNewTask: bindActionCreators(regNewTask, dispatch),
+  };
+}
+
+NewMarkerForm.propTypes = {
+  clickCoords: PropTypes.array.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewMarkerForm);

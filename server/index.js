@@ -28,8 +28,10 @@ app.get('/markers', (req, res) => MarkerModel.find((err, markers) => {
 app.post('/markers', (req, res) => {
   const marker = new MarkerModel({
     title: req.body.title,
-    author: req.body.author,
+    author: req.body.name,
+    cost: req.body.cost,
     coords: req.body.coords,
+    text: req.body.text,
   });
 
   marker.save((err) => {
