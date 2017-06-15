@@ -26,7 +26,7 @@ class MapMenu extends Component {
         overlayClassName="Overlay"
       >
         <button onClick={this.handleCloseModal}><img src='blue-close-sm.png' /></button>
-        <NewMarkerForm />
+        <NewMarkerForm handleCloseModal={this.handleCloseModal} />
       </ReactModal>
       </div>
     );

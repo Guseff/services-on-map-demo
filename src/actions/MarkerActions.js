@@ -4,6 +4,11 @@ import {
   GET_USER_COORDS,
   PUT_CLICK_COORDS,
   SHOW_MODAL,
+  CHANGE_NAME,
+  CHANGE_TITLE,
+  CHANGE_COST,
+  CHANGE_TEXT,
+  REG_NEW_TASK,
 } from '../constants/constants';
 
 const markersURL =  'http://localhost:3001/markers/';
@@ -53,19 +58,21 @@ export function createMarker(title, author, text, coords) {
     });
 }
 
-export function clickOnMap(param) {
+export function putClickCoords(param) {
   const coords = [param.lat, param.lng];
   return dispatch =>
-    dispatch(createMarker('f', 'j', 'h', coords))
-      .then(() => dispatch(getMarkersList()))
-      .then(() => dispatch({
-        type: PUT_CLICK_COORDS,
-        payload: coords,
-      }))
-      .then(() => dispatch({
-        type: SHOW_MODAL,
-        payload: true,
-      }));
+    dispatch({
+      type: PUT_CLICK_COORDS,
+      payload: coords,
+    });
+}
+
+export function showModal() {
+  return dispatch =>
+    dispatch({
+      type: SHOW_MODAL,
+      payload: true,
+    });
 }
 
 export function closeModal() {
@@ -74,4 +81,87 @@ export function closeModal() {
       type: SHOW_MODAL,
       payload: false,
     });
+}
+
+export function clickOnMap(param) {
+  return dispatch => {
+    dispatch(putClickCoords(param));
+    dispatch(showModal());
+  };
+}
+
+export function changeName(value) {
+  return dispatch =>
+    dispatch({
+      type: CHANGE_NAME,
+      payload: value,
+    });
+}
+
+export function changeTitle(value) {
+  return dispatch =>
+    dispatch({
+      type: CHANGE_TITLE,
+      payload: value,
+    });
+}
+
+export function changeCost(value) {
+  return dispatch =>
+    dispatch({
+      type: CHANGE_COST,
+      payload: value,
+    });
+}
+
+export function changeText(value) {
+  return dispatch =>
+    dispatch({
+      type: CHANGE_TEXT,
+      payload: value,
+    });
+}
+
+export function regNewTask(name, title, cost, text) {
+  const body = {
+    name: name,
+    title: title,
+    cost: cost,
+    text: text,
+  };
+
+// TODO: checking fields for appropriate conditions !!!
+
+  // if (a.length < 3) {
+  //   return dispatch =>
+  //     dispatch({
+  //       type: ERR_REG_NAME,
+  //     });
+  // }
+  // if (b.length < 3 || b.indexOf('@') < 2 || b.indexOf('.') < 1) {
+  //   return dispatch =>
+  //     dispatch({
+  //       type: ERR_REG_EMAIL,
+  //     });
+  // }
+  // if (c.length < 3) {
+  //   return dispatch =>
+  //     dispatch({
+  //       type: ERR_REG_PASS,
+  //     });
+  // }
+
+  return dispatch =>
+    fetch(markersURL, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      ...(Object.keys(body).length ? { body: JSON.stringify(body) } : {}),
+    })
+      .then(() => dispatch(changeName('')))
+      .then(() => dispatch(changeTitle('')))
+      .then(() => dispatch(changeCost('')))
+      .then(() => dispatch(changeText('')));
 }

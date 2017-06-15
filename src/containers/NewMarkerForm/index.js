@@ -8,16 +8,29 @@ class NewMarkerForm extends Component {
 
     this.nameChange = this.nameChange.bind(this);
     this.titleChange = this.titleChange.bind(this);
+    this.textChange = this.textChange.bind(this);
+    this.costChange = this.costChange.bind(this);
+    this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }
 
   nameChange(e) {
-    // this.props.clickOnMap(e.latlng);
+    
   }
   titleChange(e) {
 
   }
+  textChange(e) {
+
+  }
+  costChange(e) {
+
+  }
+  handleSubmitForm() {
+    
+  }
 
   render() {
+    const { handleCloseModal } = this.props;
     return (
       <form>
         <div>
@@ -45,7 +58,8 @@ class NewMarkerForm extends Component {
           </label>
         </div>
         <div>
-          <input className="button" type="submit" value="Submit" />
+          <input className="button" type="button" value="Submit" onClick={this.handleSubmitForm} />
+          <input className="button" type="reset" value="Cansel" onClick={handleCloseModal} />
         </div>
       </form>
     );
