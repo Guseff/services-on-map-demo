@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
-import { Marker } from 'react-leaflet';
+import { Marker, Tooltip } from 'react-leaflet';
+
 import LPopup from '../LPopup';
 
 class LMarker extends Component {
   constructor() {
     super();
 
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+  }
+
+  onMarkerClick() {
+    console.log('Marker clicked');
+    this.props.showAcceptForm();
   }
 
   render() {
-    const position = this.props.position;
+    const { marker } = this.props;
     return (
-      <Marker position={position}>
-        <LPopup title={'Wau'} text={'Bla-bla-bla'} />
+      <Marker position={marker.coords} onClick={this.onMarkerClick}>
+        <Tooltip >
+          <span>
+            <b>{marker.title}</b><br/>
+            {marker.text}<br/>
+            Cost ${marker.cost}
+          </span>
+        </Tooltip>
       </Marker>
     );
   }

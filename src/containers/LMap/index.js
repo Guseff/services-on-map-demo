@@ -19,6 +19,7 @@ class LMap extends Component {
     const position = this.props.userCoords;
     const markers = this.props.markers;
     const menuPosition = this.props.menuPosition;
+    const showAcceptForm = this.props.showAcceptForm;
 
     return (
       <Map center={position} zoom={13} onClick={this.onMapClick}>
@@ -29,7 +30,7 @@ class LMap extends Component {
 
         {markers.map(
           (marker, index) =>
-            <LMarker key={index} position={marker.coords} />
+            <LMarker key={index} marker={marker} showAcceptForm={showAcceptForm} />
         )}
       </Map>
     );

@@ -8,12 +8,11 @@ import {
   changeTitle,
   changeCost,
   changeText,
-  regNewTask,
 } from '../../actions/MarkerActions'
 
 import './style.css';
 
-class NewMarkerForm extends Component {
+class AcceptForm extends Component {
   constructor() {
     super();
 
@@ -52,7 +51,6 @@ class NewMarkerForm extends Component {
     const { handleCloseModal } = this.props;
     return (
       <form>
-        <h2>To offer new service, please, fill form below:</h2>
         <div>
           <label>
             Name:<br/>
@@ -64,14 +62,8 @@ class NewMarkerForm extends Component {
           </label>
         </div>
         <div>
-          <label>
-            Title:<br/>
-            <input className={(err.title ? 'red' : '')}
-              type="text" name="title"
-              value={inpTitle} 
-              onChange={this.titleChange}
-              placeholder="What kind of help do you need?"/>
-          </label>
+          Title:<br/>
+          TODO
         </div>
         <div>
           <label>
@@ -119,11 +111,10 @@ function mapDispatchToProps(dispatch) {
     changeTitle: bindActionCreators(changeTitle, dispatch),
     changeText: bindActionCreators(changeText, dispatch),
     changeCost: bindActionCreators(changeCost, dispatch),
-    regNewTask: bindActionCreators(regNewTask, dispatch),
   };
 }
 
-NewMarkerForm.propTypes = {
+AcceptForm.propTypes = {
   clickCoords: PropTypes.array.isRequired,
   err: PropTypes.object.isRequired,
   inpName: PropTypes.string.isRequired,
@@ -132,4 +123,4 @@ NewMarkerForm.propTypes = {
   inpText: PropTypes.string.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewMarkerForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AcceptForm);

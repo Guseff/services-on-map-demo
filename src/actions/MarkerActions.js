@@ -4,6 +4,7 @@ import {
   GET_USER_COORDS,
   PUT_CLICK_COORDS,
   SHOW_MODAL,
+  SHOW_ACCEPT,
   CHANGE_NAME,
   CHANGE_TITLE,
   CHANGE_COST,
@@ -38,14 +39,14 @@ export function getMarkersList() {
       });
 }
 
-export function createMarker(title, author, cost, text, coords) {
+export function createMarker(name, title, cost, text, coords) {
   const param =  markersURL;
   const body = {
+    name: name,
     title: title,
-    name: author,
+    cost: cost,
     text: text,
     coords: coords,
-    cost: cost,
   };
 
   return dispatch =>
@@ -76,10 +77,28 @@ export function showModal() {
     });
 }
 
+export function showAcceptForm() {
+  console.log('Open!');
+  return dispatch =>
+    dispatch({
+      type: SHOW_ACCEPT,
+      payload: true,
+    });
+}
+
 export function closeModal() {
   return dispatch =>
     dispatch({
       type: SHOW_MODAL,
+      payload: false,
+    });
+}
+
+export function closeAccept() {
+  console.log('Close!');
+  return dispatch =>
+    dispatch({
+      type: SHOW_ACCEPT,
       payload: false,
     });
 }
@@ -123,14 +142,7 @@ export function changeText(value) {
     });
 }
 
-export function regNewTask(title, name, cost, text, coords) {
-  // const body = {
-  //   name: name,
-  //   title: title,
-  //   cost: cost,
-  //   text: text,
-  //   coords: coords,
-  // };
+export function regNewTask(name, title, cost, text, coords) {
 
 // TODO: checking fields for appropriate conditions !!!
 
@@ -154,7 +166,7 @@ export function regNewTask(title, name, cost, text, coords) {
   // }
 
   return dispatch =>
-    dispatch(createMarker(title, name, cost, text, coords))
+    dispatch(createMarker(name, title, cost, text, coords))
       .then(() => dispatch(getMarkersList()))
       .then(() => dispatch(changeName('')))
       .then(() => dispatch(changeTitle('')))
