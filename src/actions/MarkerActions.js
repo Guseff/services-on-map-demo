@@ -10,6 +10,8 @@ import {
   CHANGE_COST,
   CHANGE_TEXT,
   REG_NEW_TASK,
+  ERR_NAME,
+  ERR_TITLE,
 } from '../constants/constants';
 
 const markersURL =  'http://localhost:3001/markers/';
@@ -144,24 +146,18 @@ export function regNewTask(name, title, cost, text, coords) {
 
 // TODO: checking fields for appropriate conditions !!!
 
-  // if (a.length < 3) {
-  //   return dispatch =>
-  //     dispatch({
-  //       type: ERR_REG_NAME,
-  //     });
-  // }
-  // if (b.length < 3 || b.indexOf('@') < 2 || b.indexOf('.') < 1) {
-  //   return dispatch =>
-  //     dispatch({
-  //       type: ERR_REG_EMAIL,
-  //     });
-  // }
-  // if (c.length < 3) {
-  //   return dispatch =>
-  //     dispatch({
-  //       type: ERR_REG_PASS,
-  //     });
-  // }
+  if (name.length < 3) {
+    return dispatch =>
+      dispatch({
+        type: ERR_NAME,
+      });
+  }
+  if (title.length < 3) {
+    return dispatch =>
+      dispatch({
+        type: ERR_TITLE,
+      });
+  }
 
   return dispatch =>
     dispatch(createMarker(name, title, cost, text, coords))
@@ -169,5 +165,6 @@ export function regNewTask(name, title, cost, text, coords) {
       .then(() => dispatch(changeName('')))
       .then(() => dispatch(changeTitle('')))
       .then(() => dispatch(changeCost('')))
-      .then(() => dispatch(changeText('')));
+      .then(() => dispatch(changeText('')))
+      .then(() => dispatch(closeModal()));
 }

@@ -22,11 +22,9 @@ export default function map(state = initialState, action) {
       return { ...state, clickCoords: action.payload };
 
     case SHOW_MODAL:
-      console.log('State modal!');
       return { ...state, showModal: action.payload };
 
     case SHOW_ACCEPT:
-      console.log('State accept!');
       return { ...state, showAccept: action.payload };
 
     default:

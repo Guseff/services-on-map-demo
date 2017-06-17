@@ -44,7 +44,9 @@ class NewMarkerForm extends Component {
       this.props.inpText,
       this.props.clickCoords
     );
-    this.props.handleCloseModal();
+    // if (this.props.inpName.lenth <= 3 && this.props.inpTitle.lenth >= 3) {
+    //   this.props.handleCloseModal();
+    // }
   }
 
   render() {
