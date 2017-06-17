@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Marker, Tooltip } from 'react-leaflet';
+import { Icon } from 'leaflet';
 
 import LPopup from '../LPopup';
 
@@ -17,8 +18,9 @@ class LMarker extends Component {
 
   render() {
     const { marker } = this.props;
+    const redIcon = new Icon({iconUrl: './marker-icon-green.png'});
     return (
-      <Marker position={marker.coords} onClick={this.onMarkerClick}>
+      <Marker position={marker.coords} icon={redIcon} onClick={this.onMarkerClick}>
         <Tooltip >
           <span>
             <b>{marker.title}</b><br/>

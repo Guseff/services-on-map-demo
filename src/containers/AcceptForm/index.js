@@ -51,6 +51,7 @@ class AcceptForm extends Component {
     const { handleCloseModal } = this.props;
     return (
       <form>
+        <h2>To accept the offer, fill form below:</h2>
         <div>
           <label>
             Name:<br/>
@@ -59,20 +60,6 @@ class AcceptForm extends Component {
               value={inpName} 
               onChange={this.nameChange}
               placeholder="What is your name?" />
-          </label>
-        </div>
-        <div>
-          Title:<br/>
-          TODO
-        </div>
-        <div>
-          <label>
-            Cost:<br/>
-            <input className={(err.cost ? 'red' : '')}
-              type="number" name="cost"
-              value={inpCost} 
-              onChange={this.costChange}
-              placeholder="How much you are going to pay?" />
           </label>
         </div>
         <div>

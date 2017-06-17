@@ -70,6 +70,7 @@ export function putClickCoords(param) {
 }
 
 export function showModal() {
+    console.log('Open mod!');
   return dispatch =>
     dispatch({
       type: SHOW_MODAL,
@@ -78,7 +79,7 @@ export function showModal() {
 }
 
 export function showAcceptForm() {
-  console.log('Open!');
+  console.log('Open acc!');
   return dispatch =>
     dispatch({
       type: SHOW_ACCEPT,

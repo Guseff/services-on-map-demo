@@ -19,8 +19,9 @@ class App extends Component {
     const {
       markers, userCoords, clickCoords,
       clickOnMap, showModal, showAccept,
-      closeModal, closeAccept,
+      closeModal, closeAccept, showAcceptForm,
     } = this.props;
+
     return (
       <div className="App">
         <LMap markers={markers} userCoords={userCoords} clickOnMap={clickOnMap}  showAcceptForm={showAcceptForm} />
