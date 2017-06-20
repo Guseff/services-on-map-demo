@@ -164,9 +164,5 @@ export function regNewTask(name, title, cost, text, coords) {
   return dispatch =>
     dispatch(createMarker(name, title, cost, text, coords))
       .then(() => dispatch(getMarkersList()))
-      .then(() => dispatch(changeName('')))
-      .then(() => dispatch(changeTitle('')))
-      .then(() => dispatch(changeCost(0)))
-      .then(() => dispatch(changeText('')))
       .then(() => dispatch(closeModal()));
 }

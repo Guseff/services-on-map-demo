@@ -22,16 +22,16 @@ class Form extends Component {
   }
 
   nameChange(e) {
-    this.state.inpName = e.target.value;
+    this.setState({inpName: e.target.value});
   }
   titleChange(e) {
-    this.state.inpTitle = e.target.value;
+    this.setState({inpTitle: e.target.value});
   }
   textChange(e) {
-    this.state.inpText = e.target.value;
+    this.setState({inpText: e.target.value});
   }
   costChange(e) {
-    this.state.inpNum = parseInt(e.target.value);
+    this.setState({inpNum: parseInt(e.target.value)});
   }
   formatDate(date) {
     const d = new Date(date);

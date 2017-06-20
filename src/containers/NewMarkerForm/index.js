@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Form from '../Form';
 
-import {
-  regNewTask,
-} from '../../actions/MarkerActions';
+import Form from '../Form';
+import { regNewTask } from '../../actions/MarkerActions';
 
 class NewMarkerForm extends Form {
   constructor() {
@@ -16,7 +14,6 @@ class NewMarkerForm extends Form {
   }
 
   handleSubmitForm() {
-    console.log(this.state);
     const { inpName, inpTitle, inpNum, inpText } = this.state;
     this.props.regNewTask(
       inpName,
@@ -28,8 +25,8 @@ class NewMarkerForm extends Form {
   }
 
   render() {
-    const { err } = this.props;
-    const { handleCloseModal } = this.props;
+    const { err, handleCloseModal } = this.props;
+    const { inpName, inpTitle, inpNum, inpText } = this.state;
     return (
       <form>
         <h2>To offer new service, please, fill form below:</h2>
@@ -38,7 +35,7 @@ class NewMarkerForm extends Form {
             Name:<br/>
             <input className={(err.name ? 'red' : '')}
               type="text" name="name"
-              value={this.state.inpName} 
+              value={inpName} 
               onChange={this.nameChange}
               placeholder="What is your name?" />
           </label>
@@ -48,7 +45,7 @@ class NewMarkerForm extends Form {
             Title:<br/>
             <input className={(err.title ? 'red' : '')}
               type="text" name="title"
-              value={this.state.inpTitle} 
+              value={inpTitle} 
               onChange={this.titleChange}
               placeholder="What kind of help do you need?"/>
           </label>
@@ -58,7 +55,7 @@ class NewMarkerForm extends Form {
             Cost:<br/>
             <input className={(err.cost ? 'red' : '')}
               type="number" name="cost"
-              value={this.state.inpNum} 
+              value={inpNum} 
               onChange={this.costChange}
               placeholder="How much you are going to pay?" />
           </label>
@@ -68,7 +65,7 @@ class NewMarkerForm extends Form {
             Text:<br/>
             <textarea className={(err.text ? 'red' : '')} 
               type="text" name="text"
-              value={this.state.inpText} 
+              value={inpText} 
               onChange={this.textChange} 
               placeholder="Enter your comment here..." />
           </label>
