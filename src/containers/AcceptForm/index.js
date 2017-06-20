@@ -45,12 +45,32 @@ class AcceptForm extends Component {
     );
     this.props.handleCloseModal();
   }
+  formatDate(date) {
+    const d = new Date(date);
+    let dd = d.getDate();
+    if (dd < 10) dd = '0' + dd;
+
+    let mm = d.getMonth() + 1;
+    if (mm < 10) mm = '0' + mm;
+
+    let yy = d.getFullYear();
+
+    return dd + '.' + mm + '.' + yy;
+    //  return date;
+  }
 
   render() {
-    const { err, inpName, inpTitle, inpCost, inpText } = this.props;
+    const { err, inpName, inpTitle, inpCost, inpText, clickedMarker } = this.props;
     const { handleCloseModal } = this.props;
     return (
       <form>
+        <h2>Offer details:</h2>
+        <div>
+          <b>Title:</b> {clickedMarker.title}<br/>
+          <b>Offered by:</b> {clickedMarker.author}<br/>
+          <b>Description:</b> {clickedMarker.text}<br/>
+          <b>Data:</b> {this.formatDate(clickedMarker.modified)}
+        </div>
         <h2>To accept the offer, fill form below:</h2>
         <div>
           <label>

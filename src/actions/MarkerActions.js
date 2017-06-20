@@ -79,11 +79,12 @@ export function showModal() {
     });
 }
 
-export function showAcceptForm() {
+export function showAcceptForm(marker) {
   return dispatch =>
     dispatch({
       type: SHOW_ACCEPT,
       payload: true,
+      clickedMarker: marker,
     });
 }
 
@@ -100,6 +101,7 @@ export function closeAccept() {
     dispatch({
       type: SHOW_ACCEPT,
       payload: false,
+      clickedMarker: {},
     });
 }
 
@@ -144,8 +146,7 @@ export function changeText(value) {
 
 export function regNewTask(name, title, cost, text, coords) {
 
-// TODO: checking fields for appropriate conditions !!!
-
+// checking fields for appropriate conditions
   if (name.length < 3) {
     return dispatch =>
       dispatch({
@@ -164,7 +165,7 @@ export function regNewTask(name, title, cost, text, coords) {
       .then(() => dispatch(getMarkersList()))
       .then(() => dispatch(changeName('')))
       .then(() => dispatch(changeTitle('')))
-      .then(() => dispatch(changeCost('')))
+      .then(() => dispatch(changeCost(0)))
       .then(() => dispatch(changeText('')))
       .then(() => dispatch(closeModal()));
 }

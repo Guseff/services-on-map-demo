@@ -22,7 +22,10 @@ const Markers = new Schema({
   cost: { type: Number },
   modified: { type: Date, default: Date.now },
   coords: { type: Array, required: true },
-  status: { type: Number, default: 1 }
+  status: { type: Number, default: 1 },
+  executor: { type: String },
+  exec_phone: { type: String },
+  exec_text: { type: String },
 });
 
 const MarkersModel = mongoose.model('Markers', Markers);

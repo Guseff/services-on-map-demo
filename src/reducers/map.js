@@ -10,6 +10,7 @@ const initialState = {
   clickCoords: [],
   showModal: false,
   showAccept: false,
+  clickedMarker: {},
 };
 
 export default function map(state = initialState, action) {
@@ -25,7 +26,7 @@ export default function map(state = initialState, action) {
       return { ...state, showModal: action.payload };
 
     case SHOW_ACCEPT:
-      return { ...state, showAccept: action.payload };
+      return { ...state, showAccept: action.payload, clickedMarker: action.clickedMarker };
 
     default:
       return state;

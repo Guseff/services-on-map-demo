@@ -34,6 +34,7 @@ form input {
 }
 form textarea {
   height: 160px;
+  resize: none;
 }
 
 .red {

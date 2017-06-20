@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     const {
       markers, userCoords, clickCoords,
-      clickOnMap, showModal, showAccept,
+      clickOnMap, showModal, showAccept, clickedMarker,
       closeModal, closeAccept, showAcceptForm,
     } = this.props;
 
@@ -26,7 +26,7 @@ class App extends Component {
       <div className="App">
         <LMap markers={markers} userCoords={userCoords} clickOnMap={clickOnMap}  showAcceptForm={showAcceptForm} />
         <MapMenu closeModal={closeModal} showModal={showModal} />
-        <AcceptMenu closeAccept={closeAccept} showAccept={showAccept} />
+        <AcceptMenu closeAccept={closeAccept} showAccept={showAccept} clickedMarker={clickedMarker} />
       </div>
     );
   }
@@ -39,6 +39,7 @@ function mapStateToProps(state) {
     clickCoords: state.map.clickCoords,
     showModal: state.map.showModal,
     showAccept: state.map.showAccept,
+    clickedMarker: state.map.clickedMarker,
   };
 }
 
@@ -57,6 +58,7 @@ App.propTypes = {
   clickCoords: PropTypes.array.isRequired,
   showModal: PropTypes.bool.isRequired,
   showAccept: PropTypes.bool.isRequired,
+  clickedMarker: PropTypes.object.isRequired,
 
   clickOnMap: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,

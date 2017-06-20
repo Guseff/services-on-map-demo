@@ -34,13 +34,13 @@ class NewMarkerForm extends Component {
     this.props.changeText(e.target.value);
   }
   costChange(e) {
-    this.props.changeCost(e.target.value);
+    this.props.changeCost(parseInt(e.target.value, 10));
   }
   handleSubmitForm() {
     this.props.regNewTask(
       this.props.inpName,
       this.props.inpTitle,
-      Number(this.props.inpCost),
+      this.props.inpCost,
       this.props.inpText,
       this.props.clickCoords
     );

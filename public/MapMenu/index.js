@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import NewMarkerForm from '../NewMarkerForm';
-import AcceptForm from '../AcceptForm';
 
 import './style.css';
 
-class AcceptMenu extends Component {
+class MapMenu extends Component {
   constructor() {
     super();
 
@@ -13,25 +12,25 @@ class AcceptMenu extends Component {
   }
 
   handleCloseModal() {
-    this.props.closeAccept();
+    this.props.closeModal();
   }
 
   render() {
-    const { showAccept, clickedMarker } = this.props;
+    const { showModal } = this.props;
     return (
       <div>
       <ReactModal 
-        isOpen={showAccept}
+        isOpen={showModal}
         contentLabel="Minimal Modal Example"
         className="Modal"
         overlayClassName="Overlay"
       >
         <button onClick={this.handleCloseModal}><img src='blue-close-sm.png' /></button>
-        <AcceptForm handleCloseModal={this.handleCloseModal} clickedMarker={clickedMarker} />
+        <NewMarkerForm handleCloseModal={this.handleCloseModal} />
       </ReactModal>
       </div>
     );
   }
 }
 
-export default AcceptMenu;
+export default MapMenu;

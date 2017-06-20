@@ -12,7 +12,7 @@ class LMarker extends Component {
   }
 
   onMarkerClick() {
-    this.props.showAcceptForm();
+    this.props.showAcceptForm(this.props.marker);
   }
 
   render() {
