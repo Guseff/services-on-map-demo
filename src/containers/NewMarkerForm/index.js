@@ -16,12 +16,13 @@ class NewMarkerForm extends Form {
   }
 
   handleSubmitForm() {
-    console.log(this.state.impName);
+    console.log(this.state);
+    const { inpName, inpTitle, inpNum, inpText } = this.state;
     this.props.regNewTask(
-      this.state.inpName,
-      this.state.inpTitle,
-      this.state.inpNum,
-      this.state.inpText,
+      inpName,
+      inpTitle,
+      inpNum,
+      inpText,
       this.props.clickCoords
     );
   }

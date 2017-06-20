@@ -7,10 +7,10 @@ class Form extends Component {
     super();
 
     this.state = {
-      impName: '',
-      impTitle: '',
-      impText: '',
-      impNum: 0,
+      inpName: '',
+      inpTitle: '',
+      inpText: '',
+      inpNum: 0,
       err: {},
     }
 
@@ -22,16 +22,16 @@ class Form extends Component {
   }
 
   nameChange(e) {
-    this.state.impName = e.target.value;
+    this.state.inpName = e.target.value;
   }
   titleChange(e) {
-    this.state.impTitle = e.target.value;
+    this.state.inpTitle = e.target.value;
   }
   textChange(e) {
-    this.state.impText = e.target.value;
+    this.state.inpText = e.target.value;
   }
   costChange(e) {
-    this.state.impNum = e.target.value;
+    this.state.inpNum = parseInt(e.target.value);
   }
   formatDate(date) {
     const d = new Date(date);
