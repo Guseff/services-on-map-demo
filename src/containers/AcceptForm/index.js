@@ -56,7 +56,6 @@ class AcceptForm extends Component {
     let yy = d.getFullYear();
 
     return dd + '.' + mm + '.' + yy;
-    //  return date;
   }
 
   render() {

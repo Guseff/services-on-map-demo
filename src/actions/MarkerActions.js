@@ -145,6 +145,7 @@ export function changeText(value) {
 }
 
 export function regNewTask(name, title, cost, text, coords) {
+  console.log(name);
 
 // checking fields for appropriate conditions
   if (name.length < 3) {
