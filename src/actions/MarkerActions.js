@@ -5,6 +5,7 @@ import {
   PUT_CLICK_COORDS,
   SHOW_MODAL,
   SHOW_ACCEPT,
+  SHOW_APPROVE,
   CHANGE_NAME,
   CHANGE_TITLE,
   CHANGE_COST,
@@ -80,9 +81,17 @@ export function showModal() {
 }
 
 export function showAcceptForm(marker) {
+  if (marker.status === 1) {
+    return dispatch =>
+      dispatch({
+        type: SHOW_ACCEPT,
+        payload: true,
+        clickedMarker: marker,
+      });
+  }
   return dispatch =>
     dispatch({
-      type: SHOW_ACCEPT,
+      type: SHOW_APPROVE,
       payload: true,
       clickedMarker: marker,
     });
@@ -96,11 +105,12 @@ export function closeModal() {
     });
 }
 
-export function closeAcceptModal() {
+export function closeApprove() {
   return dispatch =>
     dispatch({
-      type: SHOW_ACCEPT,
+      type: SHOW_APPROVE,
       payload: false,
+      clickedMarker: {},
     });
 }
 
@@ -159,6 +169,7 @@ export function regNewTask(name, title, cost, text, coords) {
       .then(() => dispatch(closeModal()));
 }
 
+// Accepting Task by Executor
 export function acceptTask(name, phone, text, id) {
   const url = markersURL + id;
   const body = {
@@ -179,5 +190,27 @@ export function acceptTask(name, phone, text, id) {
       ...(Object.keys(body).length ? { body: JSON.stringify(body) } : {}),
     })
       .then(() => dispatch(getMarkersList()))
-      .then(() => dispatch(closeAcceptModal()));
+      .then(() => dispatch(closeAccept()));
+}
+
+// Approving Task Executor  by Task Offer
+export function approveTask(date, id) {
+  const url = markersURL + id;
+  const body = {
+    app_date: date,
+    status: 3,
+  };
+
+  console.log(url);
+  return dispatch =>
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      ...(Object.keys(body).length ? { body: JSON.stringify(body) } : {}),
+    })
+      .then(() => dispatch(getMarkersList()))
+      .then(() => dispatch(closeApprove()));
 }

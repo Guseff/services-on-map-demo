@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import LMap from '../../containers/LMap';
 import MapMenu from '../MapMenu';
 import AcceptMenu from '../AcceptMenu';
-import { clickOnMap, closeModal, closeAccept, showAcceptForm } from '../../actions/MarkerActions';
+import ApproveMenu from '../ApproveMenu';
+import { clickOnMap, closeModal, closeAccept, closeApprove, showAcceptForm } from '../../actions/MarkerActions';
 import './style.css';
 
 class App extends Component {
@@ -18,7 +19,7 @@ class App extends Component {
   render() {
     const {
       markers, userCoords, clickCoords,
-      clickOnMap, showModal, showAccept, clickedMarker,
+      clickOnMap, showModal, showAccept, showApprove, clickedMarker,
       closeModal, closeAccept, showAcceptForm,
     } = this.props;
 
@@ -27,6 +28,7 @@ class App extends Component {
         <LMap markers={markers} userCoords={userCoords} clickOnMap={clickOnMap}  showAcceptForm={showAcceptForm} />
         <MapMenu closeModal={closeModal} showModal={showModal} />
         <AcceptMenu closeAccept={closeAccept} showAccept={showAccept} clickedMarker={clickedMarker} />
+        <ApproveMenu closeApprove={closeApprove} showApprove={showApprove} clickedMarker={clickedMarker} />
       </div>
     );
   }
@@ -39,6 +41,7 @@ function mapStateToProps(state) {
     clickCoords: state.map.clickCoords,
     showModal: state.map.showModal,
     showAccept: state.map.showAccept,
+    showApprove: state.map.showApprove,
     clickedMarker: state.map.clickedMarker,
   };
 }
@@ -48,6 +51,7 @@ function mapDispatchToProps(dispatch) {
     clickOnMap: bindActionCreators(clickOnMap, dispatch),
     closeModal: bindActionCreators(closeModal, dispatch),
     closeAccept: bindActionCreators(closeAccept, dispatch),
+    closeApprove: bindActionCreators(closeApprove, dispatch),
     showAcceptForm: bindActionCreators(showAcceptForm, dispatch),
   };
 }
@@ -58,6 +62,7 @@ App.propTypes = {
   clickCoords: PropTypes.array.isRequired,
   showModal: PropTypes.bool.isRequired,
   showAccept: PropTypes.bool.isRequired,
+  showApprove: PropTypes.bool.isRequired,
   clickedMarker: PropTypes.object.isRequired,
 
   clickOnMap: PropTypes.func.isRequired,

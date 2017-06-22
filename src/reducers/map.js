@@ -3,6 +3,7 @@ import {
   PUT_CLICK_COORDS,
   SHOW_MODAL,
   SHOW_ACCEPT,
+  SHOW_APPROVE,
 } from '../constants/constants';
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
   clickCoords: [],
   showModal: false,
   showAccept: false,
+  showApprove: false,
   clickedMarker: {},
 };
 
@@ -27,6 +29,9 @@ export default function map(state = initialState, action) {
 
     case SHOW_ACCEPT:
       return { ...state, showAccept: action.payload, clickedMarker: action.clickedMarker };
+
+    case SHOW_APPROVE:
+      return { ...state, showApprove: action.payload, clickedMarker: action.clickedMarker };
 
     default:
       return state;

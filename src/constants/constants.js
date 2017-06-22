@@ -11,3 +11,4 @@ export const ERR_NAME = 'ERR_NAME';
 export const ERR_TITLE = 'ERR_TITLE';
 export const ERR_COST = 'ERR_COST';
 export const SHOW_ACCEPT = 'SHOW_ACCEPT';
+export const SHOW_APPROVE = 'SHOW_APPROVE';

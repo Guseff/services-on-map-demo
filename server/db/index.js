@@ -26,6 +26,7 @@ const Markers = new Schema({
   executor: { type: String },
   exec_phone: { type: String },
   exec_text: { type: String },
+  approve_date: { type: Date }
 });
 
 const MarkersModel = mongoose.model('Markers', Markers);
