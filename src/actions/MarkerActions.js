@@ -145,24 +145,31 @@ export function changeText(value) {
 }
 
 export function regNewTask(name, title, cost, text, coords) {
-  console.log(name);
-
-// checking fields for appropriate conditions
-  if (name.length < 3) {
-    return dispatch =>
-      dispatch({
-        type: ERR_NAME,
-      });
-  }
-  if (title.length < 3) {
-    return dispatch =>
-      dispatch({
-        type: ERR_TITLE,
-      });
-  }
-
   return dispatch =>
     dispatch(createMarker(name, title, cost, text, coords))
+      .then(() => dispatch(getMarkersList()))
+      .then(() => dispatch(closeModal()));
+}
+
+export function acceptTask(name, phone, text, id) {
+  const url = markersURL + id;
+  const body = {
+    name: name,
+    phone: phone,
+    text: text,
+    status: 2,
+  };
+
+  console.log(url);
+  return dispatch =>
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      ...(Object.keys(body).length ? { body: JSON.stringify(body) } : {}),
+    })
       .then(() => dispatch(getMarkersList()))
       .then(() => dispatch(closeModal()));
 }

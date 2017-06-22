@@ -51,10 +51,56 @@ app.post('/markers', (req, res) => {
   });
 });
 
+app.put('/markers/:id', (req, res) =>
+  MarkerModel.findById(req.params.id, (err, marker) => {
+    console.log('PUT');
+    if (!marker) {
+      res.statusCode = 404;
+      return res.send({ error: 'Not found' });
+    }
+
+    marker.executor = req.body.name;
+    marker.exec_phone = req.body.phone;
+    marker.exec_text = req.body.text;
+    marker.status = req.body.status;
+    return marker.save((err) => {
+      if (!err) {
+        console.log('marker updated');
+        return res.send({ status: 'OK', marker });
+      }
+      if (err.name == 'ValidationError') {
+        res.statusCode = 400;
+        res.send({ error: 'Validation error' });
+      } else {
+        res.statusCode = 500;
+        res.send({ error: 'Server error' });
+      }
+      console.log('Internal error(%d): %s', res.statusCode, err.message);
+    });
+  }
+));
+
+app.delete('/markers/:id', (req, res) => MarkerModel.findById(req.params.id, (err, marker) => {
+  if (!marker) {
+    res.statusCode = 404;
+    return res.send({ error: 'Not found' });
+  }
+  return marker.remove((err) => {
+    if (!err) {
+      console.log('marker removed');
+      return res.send({ status: 'OK' });
+    }
+    res.statusCode = 500;
+    console.log('Internal error(%d): %s', res.statusCode, err.message);
+    return res.send({ error: 'Server error' });
+  });
+}));
+
+
 // All others
-// app.get('*', (req, res) => {
-//   res.sendFile(`${__dirname}/public/index.html`);
-// });
+app.get('*', (req, res) => {
+  res.sendFile(`${__dirname}/public/index.html`);
+});
 
 
 app.listen(port, (error) => {

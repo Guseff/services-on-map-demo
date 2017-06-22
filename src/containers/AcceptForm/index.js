@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Form from '../Form';
-import {  } from '../../actions/MarkerActions'
+import { acceptTask } from '../../actions/MarkerActions';
+
+import './style.css';
 
 class AcceptForm extends Form {
   constructor() {
@@ -14,19 +16,18 @@ class AcceptForm extends Form {
   }
 
   handleSubmitForm() {
-    const { inpName, inpTitle, inpNum, inpText } = this.state;
-    this.props.regNewTask(
+    const { inpName, inpTitle, inpText } = this.state;
+    this.props.acceptTask(
       inpName,
       inpTitle,
-      inpNum,
       inpText,
-      this.props.clickCoords
+      this.props.clickedMarker._id
     );
   }
   
   render() {
     const { err, clickedMarker, handleCloseModal } = this.props;
-    const { inpName, inpTitle, inpNum, inpText } = this.state;
+    const { inpName, inpTitle, inpText } = this.state;
     return (
       <form>
         <h2>Offer details:</h2>
@@ -45,6 +46,16 @@ class AcceptForm extends Form {
               value={inpName} 
               onChange={this.nameChange}
               placeholder="What is your name?" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Phone Number:<br/>
+            <input className={(err.name ? 'red' : '')}
+              type="text" name="name"
+              value={inpTitle} 
+              onChange={this.titleChange}
+              placeholder="Enter your phone number or e-mail here, please." />
           </label>
         </div>
         <div>
@@ -75,13 +86,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-
+    acceptTask: bindActionCreators(acceptTask, dispatch),
   };
 }
 
 AcceptForm.propTypes = {
   clickCoords: PropTypes.array.isRequired,
   err: PropTypes.object.isRequired,
+  acceptTask: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AcceptForm);

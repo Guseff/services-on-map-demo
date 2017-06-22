@@ -31,7 +31,7 @@ class Form extends Component {
     this.setState({inpText: e.target.value});
   }
   costChange(e) {
-    this.setState({inpNum: parseInt(e.target.value)});
+    this.setState({inpNum: (parseInt(e.target.value) >= 0) ? parseInt(e.target.value) : 0});
   }
   formatDate(date) {
     const d = new Date(date);
@@ -45,6 +45,7 @@ class Form extends Component {
 
     return dd + '.' + mm + '.' + yy;
   }
+
 }
 
 export default Form;
