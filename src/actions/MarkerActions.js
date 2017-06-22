@@ -96,6 +96,14 @@ export function closeModal() {
     });
 }
 
+export function closeAcceptModal() {
+  return dispatch =>
+    dispatch({
+      type: SHOW_ACCEPT,
+      payload: false,
+    });
+}
+
 export function closeAccept() {
   return dispatch =>
     dispatch({
@@ -171,5 +179,5 @@ export function acceptTask(name, phone, text, id) {
       ...(Object.keys(body).length ? { body: JSON.stringify(body) } : {}),
     })
       .then(() => dispatch(getMarkersList()))
-      .then(() => dispatch(closeModal()));
+      .then(() => dispatch(closeAcceptModal()));
 }
