@@ -31,6 +31,8 @@ class LMap extends Component {
 
         {markers.map(
           (marker, index) =>
+            (marker.status === 3) ?
+            null :
             <LMarker key={index} marker={marker} showAccept={showAccept} showAcceptForm={showAcceptForm} />
         )}
       </Map>

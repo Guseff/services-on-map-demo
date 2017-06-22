@@ -20,7 +20,7 @@ class App extends Component {
     const {
       markers, userCoords, clickCoords,
       clickOnMap, showModal, showAccept, showApprove, clickedMarker,
-      closeModal, closeAccept, showAcceptForm,
+      closeModal, closeAccept, closeApprove, showAcceptForm,
     } = this.props;
 
     return (
