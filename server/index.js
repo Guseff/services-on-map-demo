@@ -53,17 +53,19 @@ app.post('/markers', (req, res) => {
 
 app.put('/markers/:id', (req, res) =>
   MarkerModel.findById(req.params.id, (err, marker) => {
-    console.log('PUT');
     if (!marker) {
       res.statusCode = 404;
       return res.send({ error: 'Not found' });
     }
 
-    marker.executor = req.body.name;
-    marker.exec_phone = req.body.phone;
-    marker.exec_text = req.body.text;
-    marker.status = req.body.status;
-    return marker.save((err) => {
+    const newMarker = new MarkerModel(
+      Object.assign(
+        marker,
+        req.body
+      )
+    );
+
+    return newMarker.save((err) => {
       if (!err) {
         console.log('marker updated');
         return res.send({ status: 'OK', marker });

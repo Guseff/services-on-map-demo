@@ -166,9 +166,9 @@ export function regNewTask(name, title, cost, text, coords) {
 export function acceptTask(name, phone, text, id) {
   const url = markersURL + id;
   const body = {
-    name: name,
-    phone: phone,
-    text: text,
+    executor: name,
+    exec_phone: phone,
+    exec_text: text,
     status: 2,
   };
 
@@ -190,7 +190,7 @@ export function acceptTask(name, phone, text, id) {
 export function approveTask(date, id) {
   const url = markersURL + id;
   const body = {
-    app_date: date,
+    approve_date: Date.now(),
     status: 3,
   };
 
