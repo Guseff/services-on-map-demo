@@ -6,10 +6,6 @@ import {
   SHOW_MODAL,
   SHOW_ACCEPT,
   SHOW_APPROVE,
-  CHANGE_NAME,
-  CHANGE_TITLE,
-  CHANGE_COST,
-  CHANGE_TEXT,
 } from '../constants/constants';
 
 const markersURL =  'http://localhost:3001/markers/';
@@ -127,37 +123,37 @@ export function clickOnMap(param) {
   };
 }
 
-export function changeName(value) {
-  return dispatch =>
-    dispatch({
-      type: CHANGE_NAME,
-      payload: value,
-    });
-}
+// export function changeName(value) {
+//   return dispatch =>
+//     dispatch({
+//       type: CHANGE_NAME,
+//       payload: value,
+//     });
+// }
 
-export function changeTitle(value) {
-  return dispatch =>
-    dispatch({
-      type: CHANGE_TITLE,
-      payload: value,
-    });
-}
+// export function changeTitle(value) {
+//   return dispatch =>
+//     dispatch({
+//       type: CHANGE_TITLE,
+//       payload: value,
+//     });
+// }
 
-export function changeCost(value) {
-  return dispatch =>
-    dispatch({
-      type: CHANGE_COST,
-      payload: value,
-    });
-}
+// export function changeCost(value) {
+//   return dispatch =>
+//     dispatch({
+//       type: CHANGE_COST,
+//       payload: value,
+//     });
+// }
 
-export function changeText(value) {
-  return dispatch =>
-    dispatch({
-      type: CHANGE_TEXT,
-      payload: value,
-    });
-}
+// export function changeText(value) {
+//   return dispatch =>
+//     dispatch({
+//       type: CHANGE_TEXT,
+//       payload: value,
+//     });
+// }
 
 export function regNewTask(name, title, cost, text, coords) {
   return dispatch =>

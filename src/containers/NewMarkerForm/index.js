@@ -25,7 +25,7 @@ class NewMarkerForm extends Form {
   }
 
   render() {
-    const { err, handleCloseModal } = this.props;
+    const { handleCloseModal } = this.props;
     const { inpName, inpTitle, inpNum, inpText } = this.state;
     return (
       <form>
@@ -33,7 +33,7 @@ class NewMarkerForm extends Form {
         <div>
           <label>
             Name:<br/>
-            <input className={(err.name ? 'red' : '')}
+            <input className={('')}
               type="text" name="name"
               value={inpName} 
               onChange={this.nameChange}
@@ -43,7 +43,7 @@ class NewMarkerForm extends Form {
         <div>
           <label>
             Title:<br/>
-            <input className={(err.title ? 'red' : '')}
+            <input className={('')}
               type="text" name="title"
               value={inpTitle} 
               onChange={this.titleChange}
@@ -53,7 +53,7 @@ class NewMarkerForm extends Form {
         <div>
           <label>
             Cost:<br/>
-            <input className={(err.cost ? 'red' : '')}
+            <input className={('')}
               type="number" name="cost"
               value={inpNum} 
               onChange={this.costChange}
@@ -63,7 +63,7 @@ class NewMarkerForm extends Form {
         <div>
           <label>
             Text:<br/>
-            <textarea className={(err.text ? 'red' : '')} 
+            <textarea className={('')} 
               type="text" name="text"
               value={inpText} 
               onChange={this.textChange} 
@@ -82,7 +82,6 @@ class NewMarkerForm extends Form {
 function mapStateToProps(state) {
   return {
     clickCoords: state.map.clickCoords,
-    err: state.form.err,
   };
 }
 
@@ -94,7 +93,6 @@ function mapDispatchToProps(dispatch) {
 
 NewMarkerForm.propTypes = {
   clickCoords: PropTypes.array.isRequired,
-  err: PropTypes.object.isRequired,
   regNewTask: PropTypes.func.isRequired,
 };
 

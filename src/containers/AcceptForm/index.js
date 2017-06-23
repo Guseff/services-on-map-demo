@@ -26,7 +26,7 @@ class AcceptForm extends Form {
   }
   
   render() {
-    const { err, clickedMarker, handleCloseModal } = this.props;
+    const { clickedMarker, handleCloseModal } = this.props;
     const { inpName, inpTitle, inpText } = this.state;
     return (
       <form>
@@ -41,7 +41,7 @@ class AcceptForm extends Form {
         <div>
           <label>
             Name:<br/>
-            <input className={(err.name ? 'red' : '')}
+            <input className={('')}
               type="text" name="name"
               value={inpName} 
               onChange={this.nameChange}
@@ -51,7 +51,7 @@ class AcceptForm extends Form {
         <div>
           <label>
             Phone Number:<br/>
-            <input className={(err.name ? 'red' : '')}
+            <input className={''}
               type="text" name="name"
               value={inpTitle} 
               onChange={this.titleChange}
@@ -61,7 +61,7 @@ class AcceptForm extends Form {
         <div>
           <label>
             Text:<br/>
-            <textarea className={(err.text ? 'red' : '')} 
+            <textarea className={('')} 
               type="text" name="text"
               value={inpText} 
               onChange={this.textChange} 
@@ -80,7 +80,6 @@ class AcceptForm extends Form {
 function mapStateToProps(state) {
   return {
     clickCoords: state.map.clickCoords,
-    err: state.form.err,
   };
 }
 
@@ -92,7 +91,6 @@ function mapDispatchToProps(dispatch) {
 
 AcceptForm.propTypes = {
   clickCoords: PropTypes.array.isRequired,
-  err: PropTypes.object.isRequired,
   acceptTask: PropTypes.func.isRequired,
 };
 
