@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
-import NewMarkerForm from '../NewMarkerForm';
 import AcceptForm from '../AcceptForm';
 
 import './style.css';
@@ -26,7 +25,7 @@ class AcceptMenu extends Component {
         className="Modal"
         overlayClassName="Overlay"
       >
-        <button onClick={this.handleCloseModal}><img src='blue-close-sm.png' /></button>
+        <button onClick={this.handleCloseModal}><img alt='' src='blue-close-sm.png' /></button>
         <AcceptForm handleCloseModal={this.handleCloseModal} clickedMarker={clickedMarker} />
       </ReactModal>
       </div>

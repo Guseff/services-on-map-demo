@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -22,7 +22,7 @@ class ApproveForm extends Form {
   }
   
   render() {
-    const { err, clickedMarker, handleCloseModal } = this.props;
+    const { clickedMarker, handleCloseModal } = this.props;
     return (
       <form>
         <h2>Offer details:</h2>
@@ -51,7 +51,6 @@ class ApproveForm extends Form {
 function mapStateToProps(state) {
   return {
     clickCoords: state.map.clickCoords,
-    err: state.form.err,
   };
 }
 
@@ -63,7 +62,6 @@ function mapDispatchToProps(dispatch) {
 
 ApproveForm.propTypes = {
   clickCoords: PropTypes.array.isRequired,
-  err: PropTypes.object.isRequired,
   approveTask: PropTypes.func.isRequired,
 };
 

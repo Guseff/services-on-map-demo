@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import './style.css';
 
@@ -31,7 +31,7 @@ class Form extends Component {
     this.setState({inpText: e.target.value});
   }
   costChange(e) {
-    this.setState({inpNum: (parseInt(e.target.value) >= 0) ? parseInt(e.target.value) : 0});
+    this.setState({inpNum: (parseInt(e.target.value, 10) >= 0) ? parseInt(e.target.value, 10) : 0});
   }
   formatDate(date) {
     const d = new Date(date);

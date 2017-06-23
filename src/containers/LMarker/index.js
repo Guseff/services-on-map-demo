@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Marker, Tooltip } from 'react-leaflet';
 import { Icon } from 'leaflet';
 
-import LPopup from '../LPopup';
-
 class LMarker extends Component {
   constructor() {
     super();

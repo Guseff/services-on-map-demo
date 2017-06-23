@@ -10,9 +10,6 @@ import {
   CHANGE_TITLE,
   CHANGE_COST,
   CHANGE_TEXT,
-  REG_NEW_TASK,
-  ERR_NAME,
-  ERR_TITLE,
 } from '../constants/constants';
 
 const markersURL =  'http://localhost:3001/markers/';

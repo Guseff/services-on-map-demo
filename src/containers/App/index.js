@@ -11,14 +11,9 @@ import { clickOnMap, closeModal, closeAccept, closeApprove, showAcceptForm } fro
 import './style.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-  }
-
   render() {
     const {
-      markers, userCoords, clickCoords,
+      markers, userCoords,
       clickOnMap, showModal, showAccept, showApprove, clickedMarker,
       closeModal, closeAccept, closeApprove, showAcceptForm,
     } = this.props;
@@ -38,7 +33,6 @@ function mapStateToProps(state) {
   return {
     markers: state.markers.markers,
     userCoords: state.map.userCoords,
-    clickCoords: state.map.clickCoords,
     showModal: state.map.showModal,
     showAccept: state.map.showAccept,
     showApprove: state.map.showApprove,
@@ -59,7 +53,6 @@ function mapDispatchToProps(dispatch) {
 App.propTypes = {
   markers: PropTypes.array.isRequired,
   userCoords: PropTypes.array.isRequired,
-  clickCoords: PropTypes.array.isRequired,
   showModal: PropTypes.bool.isRequired,
   showAccept: PropTypes.bool.isRequired,
   showApprove: PropTypes.bool.isRequired,

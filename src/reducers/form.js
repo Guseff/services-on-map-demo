@@ -3,7 +3,6 @@ import {
   CHANGE_TITLE,
   CHANGE_COST,
   CHANGE_TEXT,
-  REG_NEW_TASK,
   ERR_NAME,
   ERR_TITLE,
   ERR_COST,
@@ -14,11 +13,6 @@ const initialState = {
   inpTitle: '',
   inpCost: 0,
   inpText: '',
-  err: {
-    name: false,
-    title: false,
-    cost: false,
-  },
 };
 
 export default function form(state = initialState, action) {

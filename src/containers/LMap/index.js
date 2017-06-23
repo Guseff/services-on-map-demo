@@ -18,7 +18,6 @@ class LMap extends Component {
   render() {
     const position = this.props.userCoords;
     const markers = this.props.markers;
-    const menuPosition = this.props.menuPosition;
     const showAccept = this.props.showAccept;
     const showAcceptForm = this.props.showAcceptForm;
 
