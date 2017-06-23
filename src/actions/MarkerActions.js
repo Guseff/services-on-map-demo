@@ -172,7 +172,6 @@ export function acceptTask(name, phone, text, id) {
     status: 2,
   };
 
-  console.log(url);
   return dispatch =>
     fetch(url, {
       method: 'PUT',
@@ -194,7 +193,6 @@ export function approveTask(date, id) {
     status: 3,
   };
 
-  console.log(url);
   return dispatch =>
     fetch(url, {
       method: 'PUT',

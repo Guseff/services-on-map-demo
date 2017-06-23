@@ -18,7 +18,11 @@ class LMarker extends Component {
     const iconPath = './marker-icon' + 
       ((marker.status === 2) ? '-green' : ((marker.status === 3) ? '-red' : ''))
       + '.png';
-    const colorIcon = new Icon({iconUrl: iconPath});
+    const colorIcon = new Icon({
+      iconUrl: iconPath,
+      iconSize: [25, 41],
+      iconAnchor: [12, 41]
+    });
     return (
       <Marker position={marker.coords} icon={colorIcon} onClick={this.onMarkerClick}>
         <Tooltip >
