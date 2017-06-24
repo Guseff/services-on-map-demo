@@ -16,6 +16,7 @@ class AcceptForm extends Form {
   }
 
   handleSubmitForm() {
+    if (this.nameCheck() || this.titleCheck()) return;
     const { inpName, inpTitle, inpText } = this.state;
     this.props.acceptTask(
       inpName,
@@ -41,7 +42,7 @@ class AcceptForm extends Form {
         <div>
           <label>
             Name:<br/>
-            <input className={('')}
+            <input className={((this.state.err.name ? 'red' : ''))}
               type="text" name="name"
               value={inpName} 
               onChange={this.nameChange}
@@ -51,7 +52,7 @@ class AcceptForm extends Form {
         <div>
           <label>
             Phone Number:<br/>
-            <input className={''}
+            <input className={(this.state.err.title ? 'red' : '')}
               type="text" name="name"
               value={inpTitle} 
               onChange={this.titleChange}

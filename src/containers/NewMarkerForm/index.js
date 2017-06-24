@@ -14,6 +14,7 @@ class NewMarkerForm extends Form {
   }
 
   handleSubmitForm() {
+    if (this.nameCheck() || this.titleCheck()) return;
     const { inpName, inpTitle, inpNum, inpText } = this.state;
     this.props.regNewTask(
       inpName,
@@ -33,7 +34,7 @@ class NewMarkerForm extends Form {
         <div>
           <label>
             Name:<br/>
-            <input className={('')}
+            <input className={(this.state.err.name ? 'red' : '')}
               type="text" name="name"
               value={inpName} 
               onChange={this.nameChange}
@@ -43,7 +44,7 @@ class NewMarkerForm extends Form {
         <div>
           <label>
             Title:<br/>
-            <input className={('')}
+            <input className={(this.state.err.title ? 'red' : '')}
               type="text" name="title"
               value={inpTitle} 
               onChange={this.titleChange}
