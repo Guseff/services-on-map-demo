@@ -22,7 +22,7 @@ class ApproveMenu extends Component {
       <ReactModal 
         isOpen={showApprove}
         contentLabel="Minimal Modal Example"
-        className="Modal"
+        className="Modal ApproveModal"
         overlayClassName="Overlay"
       >
         <button onClick={this.handleCloseModal}><img alt='' src='blue-close-sm.png' /></button>

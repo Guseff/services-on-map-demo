@@ -22,7 +22,7 @@ class AcceptMenu extends Component {
       <ReactModal 
         isOpen={showAccept}
         contentLabel="Minimal Modal Example"
-        className="Modal"
+        className="Modal AcceptModal"
         overlayClassName="Overlay"
       >
         <button onClick={this.handleCloseModal}><img alt='' src='blue-close-sm.png' /></button>

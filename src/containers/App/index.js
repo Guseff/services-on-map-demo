@@ -7,6 +7,7 @@ import LMap from '../../containers/LMap';
 import MapMenu from '../MapMenu';
 import AcceptMenu from '../AcceptMenu';
 import ApproveMenu from '../ApproveMenu';
+import Footer from '../../components/Footer';
 import { clickOnMap, closeModal, closeAccept, closeApprove, showAcceptForm } from '../../actions/MarkerActions';
 import './style.css';
 
@@ -24,6 +25,7 @@ class App extends Component {
         <MapMenu closeModal={closeModal} showModal={showModal} />
         <AcceptMenu closeAccept={closeAccept} showAccept={showAccept} clickedMarker={clickedMarker} />
         <ApproveMenu closeApprove={closeApprove} showApprove={showApprove} clickedMarker={clickedMarker} />
+        <Footer />
       </div>
     );
   }
