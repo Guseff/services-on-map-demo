@@ -14,18 +14,19 @@ class Header extends Component {
         <div className="logo">
           Welcome to Brest service offer App
         </div>
+        <div>
+          <GoogleLogin
+            clientId="732274642447-e5u8prip22va80rc4rou5tus04s3ecak.apps.googleusercontent.com"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            buttonText = ''
+            className = 'google-btn'
+          ></GoogleLogin>
+        </div>
         <div className="menu">
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
-            <li>
-              <GoogleLogin
-                clientId="732274642447-e5u8prip22va80rc4rou5tus04s3ecak.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-              />
-            </li>
           </ul>
         </div>
       </div>
