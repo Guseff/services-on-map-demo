@@ -5,10 +5,16 @@
   background-color: rgba(255, 255, 255, 0.7);  
   padding: 15px;
   border-radius: 4px;
-  height: 120px;
-  width:180px;
+  /*height: 120px;
+  width:180px;*/
   z-index: 999;
   box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+.login-menu a {
+  text-decoration: none;
+  color: #54ACD2;
+  cursor: pointer;
 }
 
 .triangle {
@@ -19,4 +25,10 @@
   position: absolute;
   top: -15px;
   right: 10px;
+}
+.clear {
+  width: 100%;
+  margin: 20px 0;
+  overflow: hidden;
+  
 }

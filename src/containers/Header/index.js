@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import GoogleLogin from 'react-google-login';
 
 import { loginUser, showLoginMenu, closeLoginMenu } from '../../actions/MarkerActions';
 
@@ -13,12 +12,7 @@ class Header extends Component {
   constructor() {
     super();
 
-    this.responseGoogle = this.responseGoogle.bind(this);
     this.photoClick = this.photoClick.bind(this);
-  }
-
-  responseGoogle(response) {
-    this.props.loginUser(response.w3);
   }
 
   photoClick() {
@@ -27,19 +21,8 @@ class Header extends Component {
 
   renderUserMenu() {
     if (Object.keys(this.props.loggedUser).length === 0) {
-      return (
-        <div>
-          <GoogleLogin
-            clientId="732274642447-e5u8prip22va80rc4rou5tus04s3ecak.apps.googleusercontent.com"
-            onSuccess={this.responseGoogle}
-            onFailure={this.responseGoogle}
-            buttonText = ''
-            className = 'google-btn'
-          />
-        </div>
-      );
+      return null;
     }
-
     return (
       <div className='user-photo'>
         <img alt='' title={'Logged as ' + this.props.loggedUser.ig} src={this.props.loggedUser.Paa} onClick={this.photoClick} />
@@ -47,7 +30,17 @@ class Header extends Component {
     );
   }
 
+  renderLoginLI() {
+    if (Object.keys(this.props.loggedUser).length === 0) {
+      return (
+        <li><a href='#' onClick={this.photoClick} >{'Log In'}</a></li>
+      );
+    }
+    return null;
+  }
+
   render() {
+    const logYes = (Object.keys(this.props.loggedUser).length === 0) ? false : true;
     return (
       <div className="head">
         <div className="logo">
@@ -60,6 +53,7 @@ class Header extends Component {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
+            {this.renderLoginLI()}
           </ul>
         </div>
       </div>

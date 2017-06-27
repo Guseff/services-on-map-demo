@@ -18,6 +18,7 @@ import {
   showLoginMenu,
   closeLoginMenu,
   logOutUser,
+  loginUser,
 } from '../../actions/MarkerActions';
 
 import './style.css';
@@ -27,7 +28,7 @@ class App extends Component {
     const {
       markers, userCoords,
       clickOnMap, showModal, showAccept, showApprove, clickedMarker, showLogMenu,
-      closeModal, closeAccept, closeApprove, showAcceptForm, closeLoginMenu, logOutUser,
+      closeModal, closeAccept, closeApprove, showAcceptForm, closeLoginMenu, logOutUser, loginUser,
     } = this.props;
 
     return (
@@ -36,7 +37,7 @@ class App extends Component {
         <MapMenu closeModal={closeModal} showModal={showModal} />
         <AcceptMenu closeAccept={closeAccept} showAccept={showAccept} clickedMarker={clickedMarker} />
         <ApproveMenu closeApprove={closeApprove} showApprove={showApprove} clickedMarker={clickedMarker} />
-        <LoginMenu showLogMenu={showLogMenu} closeLoginMenu={closeLoginMenu} logOutUser={logOutUser} />
+        <LoginMenu showLogMenu={showLogMenu} closeLoginMenu={closeLoginMenu} logOutUser={logOutUser} loginUser={loginUser} />
         <Footer />
       </div>
     );
@@ -64,6 +65,7 @@ function mapDispatchToProps(dispatch) {
     showAcceptForm: bindActionCreators(showAcceptForm, dispatch),
     closeLoginMenu: bindActionCreators(closeLoginMenu, dispatch),
     logOutUser: bindActionCreators(logOutUser, dispatch),
+    loginUser: bindActionCreators(loginUser, dispatch),
   };
 }
 

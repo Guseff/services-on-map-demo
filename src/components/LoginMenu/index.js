@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import GoogleLogin from 'react-google-login';
+import onClickOutside from 'react-onclickoutside';
 
 import './style.css';
 
@@ -8,6 +10,17 @@ class LoginMenu extends Component {
 
     this.handleClose = this.handleClose.bind(this);
     this.clickLogOut = this.clickLogOut.bind(this);
+    this.responseGoogle = this.responseGoogle.bind(this);
+  }
+
+  handleClickOutside(evt) {
+    // ..handling code goes here... 
+    this.props.closeLoginMenu();
+  }
+
+  responseGoogle(response) {
+    this.props.loginUser(response.w3);
+    this.props.closeLoginMenu();
   }
 
   handleClose() {
@@ -25,6 +38,15 @@ class LoginMenu extends Component {
       return (
         <div className='login-menu'>
           <div className='triangle'></div>
+          
+          <GoogleLogin
+            clientId="732274642447-e5u8prip22va80rc4rou5tus04s3ecak.apps.googleusercontent.com"
+            onSuccess={this.responseGoogle}
+            onFailure={this.responseGoogle}
+            buttonText = ''
+            className = 'google-btn'
+          />
+          <div className='clear'></div>
           <a href='#' className='logout-a' onClick={this.clickLogOut}>LOG OUT</a>
         </div>
       );
@@ -33,4 +55,4 @@ class LoginMenu extends Component {
   }
 }
 
-export default LoginMenu;
+export default onClickOutside(LoginMenu);
