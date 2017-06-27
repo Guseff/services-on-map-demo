@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import GoogleLogin from 'react-google-login';
-import { loginUser } from '../../actions/MarkerActions';
+
+import { loginUser, showLoginMenu, closeLoginMenu } from '../../actions/MarkerActions';
 
 import './style.css';
 
@@ -13,10 +14,15 @@ class Header extends Component {
     super();
 
     this.responseGoogle = this.responseGoogle.bind(this);
+    this.photoClick = this.photoClick.bind(this);
   }
 
   responseGoogle(response) {
     this.props.loginUser(response.w3);
+  }
+
+  photoClick() {
+    this.props.showLoginMenu();
   }
 
   renderUserMenu() {
@@ -36,9 +42,7 @@ class Header extends Component {
 
     return (
       <div className='user-photo'>
-        <img alt='' title={'Logged as ' + this.props.loggedUser.ig} src={this.props.loggedUser.Paa} />
-
-        
+        <img alt='' title={'Logged as ' + this.props.loggedUser.ig} src={this.props.loggedUser.Paa} onClick={this.photoClick} />
       </div>
     );
   }
@@ -66,18 +70,25 @@ class Header extends Component {
 function mapStateToProps(state) {
   return {
     loggedUser: state.login.loggedUser,
+    showLogMenu: state.login.showLogMenu,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     loginUser: bindActionCreators(loginUser, dispatch),
+    showLoginMenu: bindActionCreators(showLoginMenu, dispatch),
+    closeLoginMenu: bindActionCreators(closeLoginMenu, dispatch),
   };
 }
 
 Header.propTypes = {
   loggedUser: PropTypes.object.isRequired,
+  showLogMenu: PropTypes.bool.isRequired,
+
   loginUser: PropTypes.func.isRequired,
+  showLoginMenu: PropTypes.func.isRequired,
+  closeLoginMenu: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

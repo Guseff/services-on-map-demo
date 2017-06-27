@@ -58,13 +58,16 @@
   background-image: url('./img/btn_google_signin_light_focus_web.png');
 }
 .user-photo {
+  width: 32px;
+  height: 32px;
   float: right;
-  height: 60px;
+  margin: 13px 30px 0 0;
+  position: relative;
 }
 .user-photo img {
   width: 32px;
   height: 32px;
   border-radius: 16px;
-  margin: 13px 30px 0 0;
+  cursor: pointer;
 }
 

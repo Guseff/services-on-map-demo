@@ -7,6 +7,7 @@ import {
   SHOW_ACCEPT,
   SHOW_APPROVE,
   USER_LOGIN,
+  SHOW_LOG_MENU,
 } from '../constants/constants';
 
 const markersURL =  'http://localhost:3001/markers/';
@@ -132,6 +133,14 @@ export function loginUser(user) {
     });
 }
 
+export function logOutUser(user) {
+  return dispatch =>
+    dispatch({
+      type: USER_LOGIN,
+      payload: {},
+    });
+}
+
 export function regNewTask(name, title, cost, text, coords) {
   return dispatch =>
     dispatch(createMarker(name, title, cost, text, coords))
@@ -181,4 +190,20 @@ export function approveTask(date, id) {
     })
       .then(() => dispatch(getMarkersList()))
       .then(() => dispatch(closeApprove()));
+}
+
+export function showLoginMenu() {
+  return dispatch =>
+    dispatch({
+      type: SHOW_LOG_MENU,
+      payload: true,
+    });
+}
+
+export function closeLoginMenu() {
+  return dispatch =>
+    dispatch({
+      type: SHOW_LOG_MENU,
+      payload: false,
+    });
 }
