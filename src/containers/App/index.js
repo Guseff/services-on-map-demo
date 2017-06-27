@@ -8,7 +8,6 @@ import MapMenu from '../MapMenu';
 import AcceptMenu from '../AcceptMenu';
 import ApproveMenu from '../ApproveMenu';
 import Footer from '../../components/Footer';
-import LoginMenu from '../../components/LoginMenu';
 import {
   clickOnMap,
   closeModal,
@@ -37,7 +36,6 @@ class App extends Component {
         <MapMenu closeModal={closeModal} showModal={showModal} />
         <AcceptMenu closeAccept={closeAccept} showAccept={showAccept} clickedMarker={clickedMarker} />
         <ApproveMenu closeApprove={closeApprove} showApprove={showApprove} clickedMarker={clickedMarker} />
-        <LoginMenu showLogMenu={showLogMenu} closeLoginMenu={closeLoginMenu} logOutUser={logOutUser} loginUser={loginUser} />
         <Footer />
       </div>
     );

@@ -4,7 +4,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { loginUser, showLoginMenu, closeLoginMenu } from '../../actions/MarkerActions';
+import LoginMenu from '../../components/LoginMenu';
+import {
+  loginUser, 
+  showLoginMenu,
+  closeLoginMenu,
+  showLogMenu,
+  logOutUser,
+} from '../../actions/MarkerActions';
 
 import './style.css';
 
@@ -41,6 +48,11 @@ class Header extends Component {
 
   render() {
     const logYes = (Object.keys(this.props.loggedUser).length === 0) ? false : true;
+    const {
+      markers, userCoords,
+      clickOnMap, showModal, showAccept, showApprove, clickedMarker, showLogMenu,
+      closeModal, closeAccept, closeApprove, showAcceptForm, closeLoginMenu, logOutUser, loginUser,
+    } = this.props;
     return (
       <div className="head">
         <div className="logo">
@@ -56,6 +68,12 @@ class Header extends Component {
             {this.renderLoginLI()}
           </ul>
         </div>
+        <LoginMenu 
+          showLogMenu={showLogMenu} 
+          closeLoginMenu={closeLoginMenu} 
+          logOutUser={logOutUser} 
+          loginUser={loginUser} 
+        />
       </div>
     );
   }
@@ -73,6 +91,7 @@ function mapDispatchToProps(dispatch) {
     loginUser: bindActionCreators(loginUser, dispatch),
     showLoginMenu: bindActionCreators(showLoginMenu, dispatch),
     closeLoginMenu: bindActionCreators(closeLoginMenu, dispatch),
+    logOutUser: bindActionCreators(logOutUser, dispatch),
   };
 }
 
@@ -83,6 +102,7 @@ Header.propTypes = {
   loginUser: PropTypes.func.isRequired,
   showLoginMenu: PropTypes.func.isRequired,
   closeLoginMenu: PropTypes.func.isRequired,
+  logOutUser: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

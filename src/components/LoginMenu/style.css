@@ -1,20 +1,25 @@
 .login-menu {
   position: absolute;
   right: 30px;
-  top: 5px;
+  top: 65px;
   background-color: rgba(255, 255, 255, 0.7);  
   padding: 15px;
   border-radius: 4px;
-  /*height: 120px;
-  width:180px;*/
   z-index: 999;
   box-shadow: 0 3px 6px rgba(0,0,0,0.3);
 }
 
-.login-menu a {
+.login-menu button {
   text-decoration: none;
   color: #54ACD2;
   cursor: pointer;
+  text-align: center;
+  display: block;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 0 auto;
+  font-size: 16px;
 }
 
 .triangle {

@@ -47,7 +47,7 @@ class LoginMenu extends Component {
             className = 'google-btn'
           />
           <div className='clear'></div>
-          <a href='#' className='logout-a' onClick={this.clickLogOut}>LOG OUT</a>
+          <button className='logout-a' onClick={this.clickLogOut}>LOG OUT</button>
         </div>
       );
     }
