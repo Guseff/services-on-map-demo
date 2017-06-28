@@ -37,16 +37,17 @@ export function getMarkersList() {
       });
 }
 
-export function createMarker(name, title, cost, text, coords) {
+export function createMarker(id, name, title, cost, text, coords) {
   const param =  markersURL;
   const body = {
+    author_id: id,
     name: name,
     title: title,
     cost: cost,
     text: text,
     coords: coords,
   };
-
+console.log(body.author_id);
   return dispatch =>
     fetch(param, {
       method: 'POST',
@@ -141,9 +142,9 @@ export function logOutUser(user) {
     });
 }
 
-export function regNewTask(name, title, cost, text, coords) {
+export function regNewTask(id, name, title, cost, text, coords) {
   return dispatch =>
-    dispatch(createMarker(name, title, cost, text, coords))
+    dispatch(createMarker(id, name, title, cost, text, coords))
       .then(() => dispatch(getMarkersList()))
       .then(() => dispatch(closeModal()));
 }

@@ -17,6 +17,7 @@ class NewMarkerForm extends Form {
     if (this.nameCheck() || this.titleCheck()) return;
     const { inpName, inpTitle, inpNum, inpText } = this.state;
     this.props.regNewTask(
+      'user_id',
       inpName,
       inpTitle,
       inpNum,

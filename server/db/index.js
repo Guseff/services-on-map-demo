@@ -15,6 +15,7 @@ const Schema = mongoose.Schema;
 
 // Schemas
 const Markers = new Schema({
+  author_id: { type: String, required: true },
   title: { type: String, required: true },
   author: { type: String, required: true },
   text: { type: String },
@@ -29,5 +30,14 @@ const Markers = new Schema({
   approve_date: { type: Date, default: Date.now }
 });
 
+const Users = new Schema({
+  name: { type: String, required: true },
+  google_id: { type: String },
+  photoURL: { type: String },
+  email: { type: String },
+});
+
 const MarkersModel = mongoose.model('Markers', Markers);
+const UsersModel = mongoose.model('Users', Users);
 module.exports.MarkersModel = MarkersModel;
+module.exports.UsersModel = UsersModel;
