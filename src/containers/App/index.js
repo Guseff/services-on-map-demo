@@ -14,7 +14,6 @@ import {
   closeAccept,
   closeApprove,
   showAcceptForm,
-  showLoginMenu,
   closeLoginMenu,
   logOutUser,
   loginUser,
@@ -26,8 +25,8 @@ class App extends Component {
   render() {
     const {
       markers, userCoords,
-      clickOnMap, showModal, showAccept, showApprove, clickedMarker, showLogMenu,
-      closeModal, closeAccept, closeApprove, showAcceptForm, closeLoginMenu, logOutUser, loginUser,
+      clickOnMap, showModal, showAccept, showApprove, clickedMarker,
+      closeModal, closeAccept, closeApprove, showAcceptForm,
     } = this.props;
 
     return (

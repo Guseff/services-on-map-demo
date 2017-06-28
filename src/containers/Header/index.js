@@ -9,7 +9,6 @@ import {
   loginUser, 
   showLoginMenu,
   closeLoginMenu,
-  showLogMenu,
   logOutUser,
 } from '../../actions/MarkerActions';
 
@@ -40,18 +39,16 @@ class Header extends Component {
   renderLoginLI() {
     if (Object.keys(this.props.loggedUser).length === 0) {
       return (
-        <li><a href='#' onClick={this.photoClick} >{'Log In'}</a></li>
+        <li><button href='#' onClick={this.photoClick} >{'Log In'}</button></li>
       );
     }
     return null;
   }
 
   render() {
-    const logYes = (Object.keys(this.props.loggedUser).length === 0) ? false : true;
     const {
-      markers, userCoords,
-      clickOnMap, showModal, showAccept, showApprove, clickedMarker, showLogMenu,
-      closeModal, closeAccept, closeApprove, showAcceptForm, closeLoginMenu, logOutUser, loginUser,
+      showLogMenu,
+      closeLoginMenu, logOutUser, loginUser,
     } = this.props;
     return (
       <div className="head">
