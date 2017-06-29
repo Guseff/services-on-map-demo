@@ -10,7 +10,8 @@ import {
   SHOW_LOG_MENU,
 } from '../constants/constants';
 
-const markersURL =  'http://localhost:3001/markers/';
+const markersURL = 'http://localhost:3001/markers/';
+const usersURL = 'http://localhost:3001/users/';
 
 export function getUserPosition() {
   return dispatch => dispatch(getPosition({ enableHighAccuracy: true }    ))
@@ -127,10 +128,25 @@ export function clickOnMap(param) {
 }
 
 export function loginUser(user) {
+  console.log(user);
+  const url = usersURL;
+
   return dispatch =>
-    dispatch({
-      type: USER_LOGIN,
-      payload: user,
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      ...(Object.keys(user).length ? { body: JSON.stringify(user) } : {}),
+    })
+    .then(resp => resp.json())
+    .then(resp => {
+      console.log(resp);
+      dispatch({
+        type: USER_LOGIN,
+        payload: resp,
+      });
     });
 }
 
@@ -150,9 +166,10 @@ export function regNewTask(id, name, title, cost, text, coords) {
 }
 
 // Accepting Task by Executor
-export function acceptTask(name, phone, text, id) {
+export function acceptTask(exec_id, name, phone, text, id) {
   const url = markersURL + id;
   const body = {
+    exec_id: exec_id,
     executor: name,
     exec_phone: phone,
     exec_text: text,

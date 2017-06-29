@@ -35,5 +35,22 @@
   width: 100%;
   margin: 20px 0;
   overflow: hidden;
-  
+}
+.google-btn {
+  float: right;
+  width: 191px;
+  height: 46px;
+  background: transparent ;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-image: url('./img/btn_google_signin_dark_normal_web.png');
+  cursor: pointer;
+  outline: none;
+}
+.google-btn:active {
+  background-image: url('./img/btn_google_signin_dark_pressed_web.png');
+}
+.google-btn:focus {
+  background-image: url('./img/btn_google_signin_dark_focus_web.png');
 }

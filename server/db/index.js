@@ -24,6 +24,7 @@ const Markers = new Schema({
   modified: { type: Date, default: Date.now },
   coords: { type: Array, required: true },
   status: { type: Number, default: 1 },
+  exec_id: { type: String },
   executor: { type: String, default: '' },
   exec_phone: { type: String, default: '' },
   exec_text: { type: String },
@@ -35,6 +36,7 @@ const Users = new Schema({
   google_id: { type: String },
   photoURL: { type: String },
   email: { type: String },
+  phone: { type: String },
 });
 
 const MarkersModel = mongoose.model('Markers', Markers);

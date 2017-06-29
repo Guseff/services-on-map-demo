@@ -19,6 +19,7 @@ class AcceptForm extends Form {
     if (this.nameCheck() || this.titleCheck()) return;
     const { inpName, inpTitle, inpText } = this.state;
     this.props.acceptTask(
+      'exec_id',
       inpName,
       inpTitle,
       inpText,
