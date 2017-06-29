@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
     "leaflet": "^1.0.3",
     "mongoose": "^4.10.5",
     "prop-types": "^15.5.10",

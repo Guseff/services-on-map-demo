@@ -31,7 +31,7 @@ class Header extends Component {
     }
     return (
       <div className='user-photo'>
-        <img alt='' title={'Logged as ' + this.props.loggedUser.ig} src={this.props.loggedUser.Paa} onClick={this.photoClick} />
+        <img alt='' title={'Logged as ' + this.props.loggedUser.name} src={this.props.loggedUser.photoURL} onClick={this.photoClick} />
       </div>
     );
   }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Form from '../Form';
-import { acceptTask } from '../../actions/MarkerActions';
+import { acceptTask, changePhoneNumber } from '../../actions/MarkerActions';
 
 import './style.css';
 
@@ -13,6 +13,11 @@ class AcceptForm extends Form {
     super();
 
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({inpName: this.props.loggedUser.name});
+   (this.props.loggedUser.phone === '') ? null : this.setState({inpTitle: this.props.loggedUser.phone});
   }
 
   handleSubmitForm() {
@@ -24,6 +29,10 @@ class AcceptForm extends Form {
       inpTitle,
       inpText,
       this.props.clickedMarker._id
+    );
+    this.props.changePhoneNumber(
+      this.props.loggedUser._id,
+      this.state.inpTitle
     );
   }
   
@@ -82,18 +91,22 @@ class AcceptForm extends Form {
 function mapStateToProps(state) {
   return {
     clickCoords: state.map.clickCoords,
+    loggedUser: state.login.loggedUser,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     acceptTask: bindActionCreators(acceptTask, dispatch),
+    changePhoneNumber: bindActionCreators(changePhoneNumber, dispatch),
   };
 }
 
 AcceptForm.propTypes = {
   clickCoords: PropTypes.array.isRequired,
+  loggedUser: PropTypes.object.isRequired,
   acceptTask: PropTypes.func.isRequired,
+  changePhoneNumber: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AcceptForm);

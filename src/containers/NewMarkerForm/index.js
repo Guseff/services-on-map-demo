@@ -13,6 +13,10 @@ class NewMarkerForm extends Form {
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({inpName: this.props.loggedUser.name});
+  }
+
   handleSubmitForm() {
     if (this.nameCheck() || this.titleCheck()) return;
     const { inpName, inpTitle, inpNum, inpText } = this.state;
@@ -84,6 +88,7 @@ class NewMarkerForm extends Form {
 function mapStateToProps(state) {
   return {
     clickCoords: state.map.clickCoords,
+    loggedUser: state.login.loggedUser,
   };
 }
 
@@ -95,6 +100,7 @@ function mapDispatchToProps(dispatch) {
 
 NewMarkerForm.propTypes = {
   clickCoords: PropTypes.array.isRequired,
+  loggedUser: PropTypes.object.isRequired,
   regNewTask: PropTypes.func.isRequired,
 };
 

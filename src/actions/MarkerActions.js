@@ -128,8 +128,9 @@ export function clickOnMap(param) {
 }
 
 export function loginUser(user) {
-  console.log(user);
   const url = usersURL;
+
+  Object.assign(user, {phone: ''});
 
   return dispatch =>
     fetch(url, {
@@ -142,7 +143,6 @@ export function loginUser(user) {
     })
     .then(resp => resp.json())
     .then(resp => {
-      console.log(resp);
       dispatch({
         type: USER_LOGIN,
         payload: resp,
@@ -155,6 +155,22 @@ export function logOutUser(user) {
     dispatch({
       type: USER_LOGIN,
       payload: {},
+    });
+}
+
+export function changePhoneNumber(id, num) {
+  console.log('changePhoneNumber');
+  const url = usersURL + id;
+  const body = {phone: num};
+
+  return dispatch =>
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      ...(Object.keys(body).length ? { body: JSON.stringify(body) } : {}),
     });
 }
 

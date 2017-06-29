@@ -117,11 +117,9 @@ app.get('/users/:id', (req, res) => {
 
 // Get user or Create new if no such user
 app.post('/users', (req, res) => {
-  console.log(req.body.Eea);
   UserModel.findOne({google_id: req.body.Eea}, (err, user) => {
     if (user) {
-      console.log('user exist', user);
-      return res.json({user});
+      return res.json(user);
     }
 
     const newUser = new UserModel({
@@ -129,13 +127,13 @@ app.post('/users', (req, res) => {
       google_id: req.body.Eea,
       photoURL: req.body.Paa,
       email: req.body.U3,
+      phone: req.body.phone,
     });
 
     newUser.save((err) => {
       if (!err) {
-        console.log('user created', newUser);
-        res.send(newUser);
-        return;
+        console.log('user created');
+        return res.send(newUser);
       }
       console.log(err);
       if (err.name == 'ValidationError') {
