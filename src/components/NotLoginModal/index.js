@@ -26,7 +26,7 @@ class NotLoginModal extends Component {
         >
           <button onClick={this.handleCloseModal}><img alt='' src='blue-close-sm.png' /></button>
           <h4>
-            You need to login for work with App!
+            You have to login for work with App!
           </h4>
           <button className='close-button' onClick={this.handleCloseModal}>CLOSE</button>
         </ReactModal>

@@ -22,7 +22,7 @@ class LMap extends Component {
 
   render() {
     const position = this.props.userCoords;
-    const { markers, showAccept, showAcceptForm } = this.props;
+    const { markers, showAccept, showAcceptForm, showNotLogin, loggedUser } = this.props;
 
     return (
       <Map center={position} zoom={13} onClick={this.onMapClick}>
@@ -35,7 +35,7 @@ class LMap extends Component {
           (marker, index) =>
             (marker.status === 3) ?
             null :
-            <LMarker key={index} marker={marker} showAccept={showAccept} showAcceptForm={showAcceptForm} />
+            <LMarker key={index} marker={marker} showAccept={showAccept} showAcceptForm={showAcceptForm} showNotLogin={showNotLogin} loggedUser={loggedUser} />
         )}
       </Map>
     );

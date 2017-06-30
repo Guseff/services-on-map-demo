@@ -10,7 +10,11 @@ class LMarker extends Component {
   }
 
   onMarkerClick() {
-    this.props.showAcceptForm(this.props.marker);
+    if (Object.keys(this.props.loggedUser).length !== 0) {
+      this.props.showAcceptForm(this.props.marker);
+      return;
+    }
+    this.props.showNotLogin();
   }
 
   render() {
