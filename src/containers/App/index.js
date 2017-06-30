@@ -7,6 +7,7 @@ import LMap from '../../containers/LMap';
 import MapMenu from '../MapMenu';
 import AcceptMenu from '../AcceptMenu';
 import ApproveMenu from '../ApproveMenu';
+import NotLoginModal from '../../components/NotLoginModal';
 import Footer from '../../components/Footer';
 import {
   clickOnMap,
@@ -15,8 +16,10 @@ import {
   closeApprove,
   showAcceptForm,
   closeLoginMenu,
+  closeNotLogin,
   logOutUser,
   loginUser,
+  showNotLogin,
 } from '../../actions/MarkerActions';
 
 import './style.css';
@@ -24,17 +27,26 @@ import './style.css';
 class App extends Component {
   render() {
     const {
-      markers, userCoords,
-      clickOnMap, showModal, showAccept, showApprove, clickedMarker,
-      closeModal, closeAccept, closeApprove, showAcceptForm,
+      markers, userCoords, loggedUser,
+      clickOnMap, showModal, showAccept, showApprove, clickedMarker, showNotLoginMod,
+      closeModal, closeAccept, closeApprove, showAcceptForm, closeNotLogin, showNotLogin,
     } = this.props;
 
     return (
       <div className="App">
-        <LMap markers={markers} userCoords={userCoords} clickOnMap={clickOnMap} closeLoginMenu={closeLoginMenu} showAcceptForm={showAcceptForm} />
+        <LMap 
+          markers={markers}
+          userCoords={userCoords}
+          loggedUser={loggedUser}
+          clickOnMap={clickOnMap}
+          closeLoginMenu={closeLoginMenu}
+          showAcceptForm={showAcceptForm}
+          showNotLogin={showNotLogin}
+        />
         <MapMenu closeModal={closeModal} showModal={showModal} />
         <AcceptMenu closeAccept={closeAccept} showAccept={showAccept} clickedMarker={clickedMarker} />
         <ApproveMenu closeApprove={closeApprove} showApprove={showApprove} clickedMarker={clickedMarker} />
+        <NotLoginModal closeNotLogin={closeNotLogin} showNotLoginMod={showNotLoginMod} />
         <Footer />
       </div>
     );
@@ -50,6 +62,8 @@ function mapStateToProps(state) {
     showApprove: state.map.showApprove,
     clickedMarker: state.map.clickedMarker,
     showLogMenu: state.login.showLogMenu,
+    loggedUser: state.login.loggedUser,
+    showNotLoginMod: state.map.showNotLoginMod,
   };
 }
 
@@ -63,6 +77,8 @@ function mapDispatchToProps(dispatch) {
     closeLoginMenu: bindActionCreators(closeLoginMenu, dispatch),
     logOutUser: bindActionCreators(logOutUser, dispatch),
     loginUser: bindActionCreators(loginUser, dispatch),
+    closeNotLogin: bindActionCreators(closeNotLogin, dispatch),
+    showNotLogin: bindActionCreators(showNotLogin, dispatch),
   };
 }
 
@@ -72,8 +88,10 @@ App.propTypes = {
   showModal: PropTypes.bool.isRequired,
   showAccept: PropTypes.bool.isRequired,
   showApprove: PropTypes.bool.isRequired,
+  showNotLoginMod: PropTypes.bool.isRequired,
   clickedMarker: PropTypes.object.isRequired,
   showLogMenu: PropTypes.bool.isRequired,
+  loggedUser: PropTypes.object.isRequired,
 
   clickOnMap: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
@@ -81,6 +99,8 @@ App.propTypes = {
   showAcceptForm: PropTypes.func.isRequired,
   closeLoginMenu: PropTypes.func.isRequired,
   logOutUser: PropTypes.func.isRequired,
+  closeNotLogin: PropTypes.func.isRequired,
+  showNotLogin: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

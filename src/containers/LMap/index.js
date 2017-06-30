@@ -12,15 +12,17 @@ class LMap extends Component {
   }
 
   onMapClick(e) {
-    this.props.closeLoginMenu();
-    this.props.clickOnMap(e.latlng);
+    if (Object.keys(this.props.loggedUser).length !== 0) {
+      this.props.closeLoginMenu();
+      this.props.clickOnMap(e.latlng);
+      return;
+    }
+    this.props.showNotLogin();
   }
 
   render() {
     const position = this.props.userCoords;
-    const markers = this.props.markers;
-    const showAccept = this.props.showAccept;
-    const showAcceptForm = this.props.showAcceptForm;
+    const { markers, showAccept, showAcceptForm } = this.props;
 
     return (
       <Map center={position} zoom={13} onClick={this.onMapClick}>

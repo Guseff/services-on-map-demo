@@ -8,6 +8,7 @@ import {
   SHOW_APPROVE,
   USER_LOGIN,
   SHOW_LOG_MENU,
+  SHOW_NOT_LOGIN,
 } from '../constants/constants';
 
 const markersURL = 'http://localhost:3001/markers/';
@@ -238,6 +239,22 @@ export function closeLoginMenu() {
   return dispatch =>
     dispatch({
       type: SHOW_LOG_MENU,
+      payload: false,
+    });
+}
+
+export function showNotLogin() {
+  return dispatch =>
+    dispatch({
+      type: SHOW_NOT_LOGIN,
+      payload: true,
+    });
+}
+
+export function closeNotLogin() {
+  return dispatch =>
+    dispatch({
+      type: SHOW_NOT_LOGIN,
       payload: false,
     });
 }

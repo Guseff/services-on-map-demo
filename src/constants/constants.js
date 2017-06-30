@@ -14,3 +14,4 @@ export const SHOW_ACCEPT = 'SHOW_ACCEPT';
 export const SHOW_APPROVE = 'SHOW_APPROVE';
 export const USER_LOGIN = 'USER_LOGIN';
 export const SHOW_LOG_MENU = 'SHOW_LOG_MENU';
+export const SHOW_NOT_LOGIN = 'SHOW_NOT_LOGIN';

@@ -4,6 +4,7 @@ import {
   SHOW_MODAL,
   SHOW_ACCEPT,
   SHOW_APPROVE,
+  SHOW_NOT_LOGIN,
 } from '../constants/constants';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   showModal: false,
   showAccept: false,
   showApprove: false,
+  showNotLoginMod: false,
   clickedMarker: {},
 };
 
@@ -33,6 +35,9 @@ export default function map(state = initialState, action) {
     case SHOW_APPROVE:
       return { ...state, showApprove: action.payload, clickedMarker: action.clickedMarker };
 
+    case SHOW_NOT_LOGIN:
+      return { ...state, showNotLoginMod: action.payload };
+      
     default:
       return state;
   }

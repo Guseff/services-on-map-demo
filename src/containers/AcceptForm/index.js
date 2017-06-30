@@ -17,7 +17,7 @@ class AcceptForm extends Form {
 
   componentDidMount() {
     this.setState({inpName: this.props.loggedUser.name});
-   (this.props.loggedUser.phone === '') ? null : this.setState({inpTitle: this.props.loggedUser.phone});
+    if (this.props.loggedUser.phone !== '') this.setState({inpTitle: this.props.loggedUser.phone});
   }
 
   handleSubmitForm() {
