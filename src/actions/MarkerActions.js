@@ -155,7 +155,7 @@ export function logOutUser(user) {
   return dispatch =>
     dispatch({
       type: USER_LOGIN,
-      payload: {},
+      payload: null,
     });
 }
 

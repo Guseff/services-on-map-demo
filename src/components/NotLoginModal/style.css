@@ -23,3 +23,23 @@
   float: none;
   border-radius: 5px;
 }
+
+.NotLoginModal .google-btn {
+  float: none;
+  width: 191px;
+  height: 46px;
+  background: transparent ;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+  background-image: url('../../assets/btn_google_signin_dark_normal_web.png');
+  cursor: pointer;
+  outline: none;
+  display: block;
+}
+.NotLoginModal .google-btn:active {
+  background-image: url('../../assets/btn_google_signin_dark_pressed_web.png');
+}
+.NotLoginModal .google-btn:focus {
+  background-image: url('../../assets/btn_google_signin_dark_focus_web.png');
+}

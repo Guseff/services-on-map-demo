@@ -45,7 +45,9 @@ class Form extends Component {
     this.setState({inpText: e.target.value});
   }
   costChange(e) {
-    this.setState({inpNum: (parseInt(e.target.value, 10) >= 0) ? parseInt(e.target.value, 10) : 0});
+    const value = parseInt(e.target.value, 10);
+
+    this.setState({inpNum: (value >= 0) ? value : 0});
   }
 
   // functions for check correctness of input fields values 

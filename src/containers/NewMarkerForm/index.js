@@ -7,17 +7,17 @@ import Form from '../Form';
 import { regNewTask } from '../../actions/MarkerActions';
 
 class NewMarkerForm extends Form {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    this.state = Object.assign(this.state, {
+      inpName: props.loggedUser.name,
+    });
 
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({inpName: this.props.loggedUser.name});
-  }
-
-  handleSubmitForm() {
+   handleSubmitForm() {
     if (this.nameCheck() || this.titleCheck()) return;
     const { inpName, inpTitle, inpNum, inpText } = this.state;
     this.props.regNewTask(
@@ -32,24 +32,27 @@ class NewMarkerForm extends Form {
 
   render() {
     const { handleCloseModal } = this.props;
-    const { inpName, inpTitle, inpNum, inpText } = this.state;
+    const { inpName, inpTitle, inpNum, inpText, err } = this.state;
     return (
       <form>
         <h2>To offer new service, please, fill form below:</h2>
         <div>
           <label>
             Name:<br/>
-            <input className={(this.state.err.name ? 'red' : '')}
-              type="text" name="name"
+            <input
+              className={(err.name ? 'red' : '')}
+              type="text"
+              name="name"
               value={inpName} 
               onChange={this.nameChange}
-              placeholder="What is your name?" />
-          </label>
+              placeholder="What is your name?"
+            />
+          </label>  
         </div>
         <div>
           <label>
             Title:<br/>
-            <input className={(this.state.err.title ? 'red' : '')}
+            <input className={(err.title ? 'red' : '')}
               type="text" name="title"
               value={inpTitle} 
               onChange={this.titleChange}

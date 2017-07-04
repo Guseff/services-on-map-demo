@@ -7,8 +7,8 @@ import Form from '../Form';
 import { approveTask } from '../../actions/MarkerActions';
 
 class ApproveForm extends Form {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }

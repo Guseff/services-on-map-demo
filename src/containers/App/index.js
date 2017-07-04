@@ -29,7 +29,7 @@ class App extends Component {
     const {
       markers, userCoords, loggedUser,
       clickOnMap, showModal, showAccept, showApprove, clickedMarker, showNotLoginMod,
-      closeModal, closeAccept, closeApprove, showAcceptForm, closeNotLogin, showNotLogin,
+      closeModal, closeAccept, closeApprove, showAcceptForm, closeNotLogin, showNotLogin, loginUser
     } = this.props;
 
     return (
@@ -46,7 +46,7 @@ class App extends Component {
         <MapMenu closeModal={closeModal} showModal={showModal} />
         <AcceptMenu closeAccept={closeAccept} showAccept={showAccept} clickedMarker={clickedMarker} />
         <ApproveMenu closeApprove={closeApprove} showApprove={showApprove} clickedMarker={clickedMarker} />
-        <NotLoginModal closeNotLogin={closeNotLogin} showNotLoginMod={showNotLoginMod} />
+        <NotLoginModal closeNotLogin={closeNotLogin} showNotLoginMod={showNotLoginMod} loginUser={loginUser} />
         <Footer />
       </div>
     );
@@ -91,7 +91,7 @@ App.propTypes = {
   showNotLoginMod: PropTypes.bool.isRequired,
   clickedMarker: PropTypes.object.isRequired,
   showLogMenu: PropTypes.bool.isRequired,
-  loggedUser: PropTypes.object.isRequired,
+  loggedUser: PropTypes.object,
 
   clickOnMap: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,

@@ -25,7 +25,7 @@
 .triangle {
   width: 20px;
   height: 15px;
-  background-image: url('./img/triangle.png');
+  background-image: url('../../assets/triangle.png');
   z-index: 999;
   position: absolute;
   top: -15px;
@@ -44,13 +44,13 @@
   margin: 0;
   padding: 0;
   border: none;
-  background-image: url('./img/btn_google_signin_dark_normal_web.png');
+  background-image: url('../../assets/btn_google_signin_dark_normal_web.png');
   cursor: pointer;
   outline: none;
 }
 .google-btn:active {
-  background-image: url('./img/btn_google_signin_dark_pressed_web.png');
+  background-image: url('../../assets/btn_google_signin_dark_pressed_web.png');
 }
 .google-btn:focus {
-  background-image: url('./img/btn_google_signin_dark_focus_web.png');
+  background-image: url('../../assets/btn_google_signin_dark_focus_web.png');
 }

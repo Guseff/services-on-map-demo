@@ -9,15 +9,15 @@ import { acceptTask, changePhoneNumber } from '../../actions/MarkerActions';
 import './style.css';
 
 class AcceptForm extends Form {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    this.state = Object.assign(this.state, {
+      inpName: props.loggedUser.name,
+      inpTitle: props.loggedUser.phone !== '' ? props.loggedUser.phone : '',
+    });
 
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({inpName: this.props.loggedUser.name});
-    if (this.props.loggedUser.phone !== '') this.setState({inpTitle: this.props.loggedUser.phone});
   }
 
   handleSubmitForm() {
@@ -38,7 +38,7 @@ class AcceptForm extends Form {
   
   render() {
     const { clickedMarker, handleCloseModal } = this.props;
-    const { inpName, inpTitle, inpText } = this.state;
+    const { inpName, inpTitle, inpText, err } = this.state;
     return (
       <form>
         <h2>Offer details:</h2>
@@ -52,7 +52,7 @@ class AcceptForm extends Form {
         <div>
           <label>
             Name:<br/>
-            <input className={((this.state.err.name ? 'red' : ''))}
+            <input className={((err.name ? 'red' : ''))}
               type="text" name="name"
               value={inpName} 
               onChange={this.nameChange}
@@ -62,7 +62,7 @@ class AcceptForm extends Form {
         <div>
           <label>
             Phone Number:<br/>
-            <input className={(this.state.err.title ? 'red' : '')}
+            <input className={(err.title ? 'red' : '')}
               type="text" name="name"
               value={inpTitle} 
               onChange={this.titleChange}

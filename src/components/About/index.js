@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import './style.css';
 
-export default class About extends Component {
+export default class About extends PureComponent {
   render() {
     return (
       <div className="about">

@@ -26,20 +26,24 @@ class Header extends Component {
   }
 
   renderUserMenu() {
-    if (Object.keys(this.props.loggedUser).length === 0) {
+    if (!this.props.loggedUser) {
       return null;
     }
     return (
       <div className='user-photo'>
-        <img alt='' title={'Logged as ' + this.props.loggedUser.name} src={this.props.loggedUser.photoURL} onClick={this.photoClick} />
+        <img alt='' title={`Logged as ${this.props.loggedUser.name}`} src={this.props.loggedUser.photoURL} onClick={this.photoClick} />
       </div>
     );
   }
 
   renderLoginLI() {
-    if (Object.keys(this.props.loggedUser).length === 0) {
+    if (!this.props.loggedUser) {
       return (
-        <li><button href='#' onClick={this.photoClick} >{'Log In'}</button></li>
+        <li>
+          <button href='#' onClick={this.photoClick}>
+            Log In
+          </button>
+        </li>
       );
     }
     return null;
@@ -47,7 +51,7 @@ class Header extends Component {
 
   render() {
     const {
-      showLogMenu,
+      showLogMenu, loggedUser,
       closeLoginMenu, logOutUser, loginUser,
     } = this.props;
     return (
@@ -66,6 +70,7 @@ class Header extends Component {
           </ul>
         </div>
         <LoginMenu 
+          loggedUser={loggedUser}
           showLogMenu={showLogMenu} 
           closeLoginMenu={closeLoginMenu} 
           logOutUser={logOutUser} 
@@ -93,7 +98,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 Header.propTypes = {
-  loggedUser: PropTypes.object.isRequired,
+  loggedUser: PropTypes.object,
   showLogMenu: PropTypes.bool.isRequired,
 
   loginUser: PropTypes.func.isRequired,

@@ -12,7 +12,7 @@ class LMap extends Component {
   }
 
   onMapClick(e) {
-    if (Object.keys(this.props.loggedUser).length !== 0) {
+    if (this.props.loggedUser) {
       this.props.closeLoginMenu();
       this.props.clickOnMap(e.latlng);
       return;

@@ -4,7 +4,7 @@ import {
 } from '../constants/constants';
 
 const initialState = {
-  loggedUser: {},
+  loggedUser: null,
   showLogMenu: false,
 };
 
