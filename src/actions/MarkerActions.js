@@ -14,7 +14,7 @@ const markersURL = 'http://localhost:3001/markers/';
 const usersURL = 'http://localhost:3001/users/';
 
 export function getUserPosition() {
-  return dispatch => dispatch(getPosition({ enableHighAccuracy: true }    ))
+  return dispatch => dispatch(getPosition({ enableHighAccuracy: true } ))
     .then(
       (res) => {
         dispatch({
@@ -23,6 +23,12 @@ export function getUserPosition() {
         });
       }
     )
+    .catch(() => {
+      dispatch({
+        type: GET_USER_COORDS,
+        payload: [52.086276, 23.681814],
+      });
+    });
 }
 
 export function getMarkersList() {

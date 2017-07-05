@@ -50,21 +50,17 @@ export function logOutUser() {
 }
 
 export function checkLogin(token) {
-  console.log(token);
   const url = usersURL + token;
 
   return dispatch => {
-    if (token === null) {
-      console.log('no token');
-      return;
-    }
+    if (token === null) return;
 
     fetch(url)
       .then(resp => resp.json())
       .then((resp) => {
-        // if (resp.status === 404 || resp.status === 401) {
-        //   throw resp.error;
-        // }
+        if (resp.status === 404 || resp.status === 401) {
+          throw resp.error;
+        }
         dispatch({
           type: USER_LOGIN,
           payload: resp,
