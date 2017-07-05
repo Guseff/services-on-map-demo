@@ -6,11 +6,14 @@ import { Link } from 'react-router-dom';
 
 import LoginMenu from '../../components/LoginMenu';
 import {
-  loginUser, 
   showLoginMenu,
   closeLoginMenu,
-  logOutUser,
 } from '../../actions/MarkerActions';
+import {
+  checkLogin,
+  logOutUser,
+  loginUser, 
+} from '../../actions/LoginActions';
 
 import './style.css';
 
@@ -19,6 +22,10 @@ class Header extends Component {
     super();
 
     this.photoClick = this.photoClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.checkLogin(localStorage.getItem('token'));
   }
 
   photoClick() {
@@ -94,6 +101,7 @@ function mapDispatchToProps(dispatch) {
     showLoginMenu: bindActionCreators(showLoginMenu, dispatch),
     closeLoginMenu: bindActionCreators(closeLoginMenu, dispatch),
     logOutUser: bindActionCreators(logOutUser, dispatch),
+    checkLogin: bindActionCreators(checkLogin, dispatch),
   };
 }
 
@@ -105,6 +113,7 @@ Header.propTypes = {
   showLoginMenu: PropTypes.func.isRequired,
   closeLoginMenu: PropTypes.func.isRequired,
   logOutUser: PropTypes.func.isRequired,
+  checkLogin: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

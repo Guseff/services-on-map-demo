@@ -3,6 +3,9 @@ const app = express();
 const cors = require('cors');
 const port = 3001;
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+
+const privateKey = 'designedByMe';
 const MarkerModel = require('./db').MarkersModel;
 const UserModel = require('./db').UsersModel;
 
@@ -105,8 +108,10 @@ app.delete('/markers/:id', (req, res) => MarkerModel.findById(req.params.id, (er
 // MongoDB
 // Users
 // Get user
-app.get('/users/:id', (req, res) => {
-  UserModel.findById(req.params.id, (err, user) => {
+app.get('/users/:token', (req, res) => {
+  const user = jwt.verify(req.params.token, privateKey);
+  console.log('User:', user.user._id);
+  UserModel.findById(user.user._id, (err, user) => {
     if (!user) {
       res.statusCode = 404;
       return res.send({ error: 'Not found' });
@@ -114,12 +119,35 @@ app.get('/users/:id', (req, res) => {
     return res.send(user);
   })
 });
+// app.get('/users/:token', (req, res) => {
+//   const user = jwt.verify(req.params.token, privateKey);
+//   console.log('check', user.name);
+//   UsersModel.findOne(
+//     {name: user.name},
+//     (err, user) => {
+//       if (!user) {
+//         return res.send({ status: 404, user: '' });
+//       }
+//       if (!err) {
+//         return res.send({ status: 200, name: user.name });
+//       }
+//       console.log('Internal error(%d): %s', res.statusCode, err.message);
+//       return res.send({ status: 500, error: 'Server error' });
+//     }
+//   );
+// });
+
 
 // Get user or Create new if no such user
 app.post('/users', (req, res) => {
   UserModel.findOne({google_id: req.body.Eea}, (err, user) => {
     if (user) {
-      return res.json(user);
+      const token = jwt.sign({user: user}, privateKey);
+      return res.send({
+        status: 200,
+        token: token,
+        user: user,
+      });
     }
 
     const newUser = new UserModel({
@@ -133,7 +161,9 @@ app.post('/users', (req, res) => {
     newUser.save((err) => {
       if (!err) {
         console.log('user created');
-        return res.send(newUser);
+        const token = jwt.sign({user: newUser}, privateKey);
+        return res.send({status: 200, token});
+        // return res.send(newUser);
       }
       console.log(err);
       if (err.name == 'ValidationError') {
@@ -196,6 +226,7 @@ app.delete('/users/:id', (req, res) => UserModel.findById(req.params.id, (err, m
     return res.send({ error: 'Server error' });
   });
 }));
+
 
 
 // All others

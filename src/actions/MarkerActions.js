@@ -6,7 +6,6 @@ import {
   SHOW_MODAL,
   SHOW_ACCEPT,
   SHOW_APPROVE,
-  USER_LOGIN,
   SHOW_LOG_MENU,
   SHOW_NOT_LOGIN,
 } from '../constants/constants';
@@ -128,36 +127,7 @@ export function clickOnMap(param) {
   };
 }
 
-export function loginUser(user) {
-  const url = usersURL;
 
-  Object.assign(user, {phone: ''});
-
-  return dispatch =>
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      ...(Object.keys(user).length ? { body: JSON.stringify(user) } : {}),
-    })
-    .then(resp => resp.json())
-    .then(resp => {
-      dispatch({
-        type: USER_LOGIN,
-        payload: resp,
-      });
-    });
-}
-
-export function logOutUser(user) {
-  return dispatch =>
-    dispatch({
-      type: USER_LOGIN,
-      payload: null,
-    });
-}
 
 export function changePhoneNumber(id, num) {
   console.log('changePhoneNumber');

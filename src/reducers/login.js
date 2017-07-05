@@ -8,10 +8,10 @@ const initialState = {
   showLogMenu: false,
 };
 
-export default function map(state = initialState, action) {
+export default function login(state = initialState, action) {
   switch (action.type) {
 
-    case USER_LOGIN:
+    case USER_LOGIN: 
       return { ...state, loggedUser: action.payload };
 
     case SHOW_LOG_MENU:

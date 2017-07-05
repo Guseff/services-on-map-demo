@@ -17,10 +17,12 @@ import {
   showAcceptForm,
   closeLoginMenu,
   closeNotLogin,
-  logOutUser,
-  loginUser,
   showNotLogin,
 } from '../../actions/MarkerActions';
+import {
+  logOutUser,
+  loginUser,
+} from '../../actions/LoginActions';
 
 import './style.css';
 
