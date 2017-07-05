@@ -41,7 +41,7 @@ export function loginUser(user) {
 
 export function logOutUser() {
   return dispatch => {
-    localStorage.setItem('token', null);
+    localStorage.removeItem('token');
     dispatch({
       type: USER_LOGIN,
       payload: null,
@@ -50,14 +50,15 @@ export function logOutUser() {
 }
 
 export function checkLogin(token) {
-  if (!token) {
-    console.log('no token');
-    return;
-  }
-
+  console.log(token);
   const url = usersURL + token;
 
-  return dispatch =>
+  return dispatch => {
+    if (token === null) {
+      console.log('no token');
+      return;
+    }
+
     fetch(url)
       .then(resp => resp.json())
       .then((resp) => {
@@ -72,4 +73,5 @@ export function checkLogin(token) {
       .catch((error) => {
         logOutUser();
       });
+    }
 }
