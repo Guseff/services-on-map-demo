@@ -32,10 +32,21 @@ class LMap extends Component {
         />
 
         {markers.map(
-          (marker, index) =>
-            (marker.status === 3) ?
-            null :
-            <LMarker key={index} marker={marker} showAccept={showAccept} showAcceptForm={showAcceptForm} showNotLogin={showNotLogin} loggedUser={loggedUser} />
+          (marker, index) => {
+            if (marker.status !==3 || (!!loggedUser && loggedUser._id === marker.author_id)) {
+              return ( 
+                <LMarker 
+                  key={index}
+                  marker={marker}
+                  showAccept={showAccept}
+                  showAcceptForm={showAcceptForm}
+                  showNotLogin={showNotLogin} 
+                  loggedUser={loggedUser}
+                />
+              )
+            } 
+            return null;
+          }
         )}
       </Map>
     );

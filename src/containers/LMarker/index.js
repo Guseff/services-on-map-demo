@@ -19,7 +19,7 @@ class LMarker extends Component {
 
   getMarkerColor(status) {
     if (status === 2) return '-green';
-    if (status === 3) return '-red';
+    if (status === 3) return '-gray';
 
     return '';
   }

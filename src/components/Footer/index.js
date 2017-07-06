@@ -6,8 +6,9 @@ export default class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        <p><img alt="" src="./marker-icon.png" />  - offer without accept</p>
-        <p><img alt="" src="./marker-icon-green.png" />  - offer with accept</p>
+        <span><img alt="" src="./marker-icon.png" />  - offer without accept</span>
+        <span><img alt="" src="./marker-icon-green.png" />  - offer with accept</span>
+        <span><img alt="" src="./marker-icon-gray.png" />  - your approved offer</span>
       </div>
     );
   }
