@@ -50,7 +50,11 @@ class LoginMenu extends Component {
 
   renderLogoutButt() {
     return (
-      <button className='logout-a' onClick={this.clickLogOut}>LOG OUT</button>
+      <div>
+        <button className='logout-a' onClick={this.clickLogOut}>MY PROFILE</button>
+        <button className='logout-a' onClick={this.clickLogOut}>SETTINGS</button>
+        <button className='logout-a' onClick={this.clickLogOut}>LOG OUT</button>
+      </div>
     );
   }
 
@@ -59,7 +63,7 @@ class LoginMenu extends Component {
     if (showLogMenu) {
       return (
         <div className='login-menu'>
-          <div className='triangle'></div>
+          <div className='triangle-white'></div>
           
           { loggedUser ? this.renderLogoutButt() : this.renderLoginButt()}
                     

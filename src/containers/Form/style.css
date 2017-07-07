@@ -41,3 +41,27 @@ form textarea {
   border-color: red;
   border-width: 2px;
 }
+
+label {
+  position: relative;
+}
+
+.err-message {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  color: white;
+  background: red;
+  z-index: 1001;
+  border-radius: 6px;
+  padding: 8px;
+}
+.triangle-red {
+  width: 20px;
+  height: 15px;
+  background-image: url('../../assets/triangle-red.png');
+  z-index: 1001;
+  position: absolute;
+  top: -15px;
+  right: 10px;
+}

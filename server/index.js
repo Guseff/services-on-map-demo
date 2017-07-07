@@ -162,7 +162,11 @@ app.post('/users', (req, res) => {
       if (!err) {
         console.log('user created');
         const token = jwt.sign({user: newUser}, privateKey);
-        return res.send({status: 200, token});
+        return res.send({
+          status: 200,
+          token: token,
+          user: newUser
+        });
         // return res.send(newUser);
       }
       console.log(err);
