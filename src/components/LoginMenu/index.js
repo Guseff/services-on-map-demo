@@ -63,10 +63,8 @@ class LoginMenu extends Component {
     if (showLogMenu) {
       return (
         <div className='login-menu'>
-          <div className='triangle-white'></div>
-          
-          { loggedUser ? this.renderLogoutButt() : this.renderLoginButt()}
-                    
+          <div className='triangle-white'></div>       
+          {loggedUser ? this.renderLogoutButt() : this.renderLoginButt()}                   
         </div>
       );
     }
