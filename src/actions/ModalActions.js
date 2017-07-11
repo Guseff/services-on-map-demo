@@ -3,8 +3,10 @@ import {
   SHOW_ACCEPT,
   SHOW_APPROVE,
   SHOW_NOT_LOGIN,
+  SHOW_USER_MODAL,
 } from '../constants/constants';
 
+// modal for click on map (not on Marker)
 export function showModal() {
   return dispatch =>
     dispatch({
@@ -12,7 +14,7 @@ export function showModal() {
       payload: true,
     });
 }
-
+// modal for click on marker
 export function showAcceptForm(marker) {
   if (marker.status === 1) {
     return dispatch =>
@@ -38,6 +40,7 @@ export function closeModal() {
     });
 }
 
+// modal for final approving 
 export function closeApprove() {
   return dispatch =>
     dispatch({
@@ -46,7 +49,6 @@ export function closeApprove() {
       clickedMarker: {},
     });
 }
-
 export function closeAccept() {
   return dispatch =>
     dispatch({
@@ -56,6 +58,7 @@ export function closeAccept() {
     });
 }
 
+// not login user message modal
 export function showNotLogin() {
   return dispatch =>
     dispatch({
@@ -63,11 +66,26 @@ export function showNotLogin() {
       payload: true,
     });
 }
-
 export function closeNotLogin() {
   return dispatch =>
     dispatch({
       type: SHOW_NOT_LOGIN,
+      payload: false,
+    });
+}
+
+// modal for user information
+export function showUserModal() {
+  return dispatch =>
+    dispatch({
+      type: SHOW_USER_MODAL,
+      payload: true,
+    });
+}
+export function closeUserModal() {
+  return dispatch =>
+    dispatch({
+      type: SHOW_USER_MODAL,
       payload: false,
     });
 }

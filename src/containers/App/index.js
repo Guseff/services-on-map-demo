@@ -17,10 +17,12 @@ import {
 import {
   showAcceptForm,
   showNotLogin,
+  showUserModal,
   closeModal,
   closeAccept,
   closeApprove,
   closeNotLogin,
+  closeUserModal,
 } from '../../actions/ModalActions';
 import {
   logOutUser,
@@ -33,8 +35,9 @@ class App extends Component {
   render() {
     const {
       markers, userCoords, loggedUser, clickedMarker, clickOnMap, 
-      showModal_b, showAccept_b, showApprove_b, showNotLoginMod_b,
-      closeModal, closeAccept, closeApprove, showAcceptForm, closeNotLogin, showNotLogin, loginUser
+      showModal_b, showAccept_b, showApprove_b, showNotLoginMod_b, showUserModal_b,
+      closeModal, closeAccept, closeApprove, showAcceptForm, closeNotLogin, showNotLogin, loginUser,
+      showUserModal, closeUserModal,
     } = this.props;
 
     return (
@@ -52,6 +55,7 @@ class App extends Component {
         <AcceptMenu closeAccept={closeAccept} showAccept_b={showAccept_b} clickedMarker={clickedMarker} />
         <ApproveMenu closeApprove={closeApprove} showApprove_b={showApprove_b} clickedMarker={clickedMarker} />
         <NotLoginModal closeNotLogin={closeNotLogin} showNotLoginMod_b={showNotLoginMod_b} loginUser={loginUser} />
+        <ShowUserModal showUserModal_b={showUserModal_b} showUserModal={showUserModal} closeUserModal={closeUserModal} />
         <Footer loggedUser={loggedUser} />
       </div>
     );
@@ -69,6 +73,7 @@ function mapStateToProps(state) {
     showLogMenu: state.login.showLogMenu,
     loggedUser: state.login.loggedUser,
     showNotLoginMod_b: state.modals.showNotLoginMod_b,
+    showUserModal_b: state.modals.showUserModal_b,
   };
 }
 
@@ -84,6 +89,8 @@ function mapDispatchToProps(dispatch) {
     loginUser: bindActionCreators(loginUser, dispatch),
     closeNotLogin: bindActionCreators(closeNotLogin, dispatch),
     showNotLogin: bindActionCreators(showNotLogin, dispatch),
+    showUserModal: bindActionCreators(showUserModal, dispatch),
+    closeUserModal: bindActionCreators(closeUserModal, dispatch),
   };
 }
 
@@ -94,6 +101,7 @@ App.propTypes = {
   showAccept_b: PropTypes.bool.isRequired,
   showApprove_b: PropTypes.bool.isRequired,
   showNotLoginMod_b: PropTypes.bool.isRequired,
+  showUserModal_b: PropTypes.bool.isRequired,
   clickedMarker: PropTypes.object.isRequired,
   showLogMenu: PropTypes.bool.isRequired,
   loggedUser: PropTypes.object,
@@ -106,6 +114,8 @@ App.propTypes = {
   logOutUser: PropTypes.func.isRequired,
   closeNotLogin: PropTypes.func.isRequired,
   showNotLogin: PropTypes.func.isRequired,
+  closeUserModal: PropTypes.func.isRequired,
+  showUserModal: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

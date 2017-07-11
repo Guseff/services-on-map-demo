@@ -12,6 +12,7 @@ class LoginMenu extends Component {
     this.clickLogOut = this.clickLogOut.bind(this);
     this.responseGoogle = this.responseGoogle.bind(this);
     this.renderLoginButt = this.renderLoginButt.bind(this);
+    this.handleUserModal = this.handleUserModal.bind(this);
   }
 
   handleClickOutside(evt) {
@@ -26,6 +27,10 @@ class LoginMenu extends Component {
 
   handleClose() {
     this.props.closeLoginMenu();
+  }
+
+  handleUserModal() {
+    this.props.showUserModal();
   }
 
   clickLogOut() {
@@ -51,7 +56,7 @@ class LoginMenu extends Component {
   renderLogoutButt() {
     return (
       <div>
-        <button className='logout-a' onClick={this.clickLogOut}>MY PROFILE</button>
+        <button className='logout-a' onClick={this.handleUserModal}>MY PROFILE</button>
         <button className='logout-a' onClick={this.clickLogOut}>SETTINGS</button>
         <button className='logout-a' onClick={this.clickLogOut}>LOG OUT</button>
       </div>

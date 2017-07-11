@@ -8,11 +8,10 @@ class ShowUserModal extends Component {
     super();
 
     this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.responseGoogle = this.responseGoogle.bind(this);
   }
 
   handleCloseModal() {
-    this.props.closeShowUser();
+    this.props.closeUserModal();
   }
 
   render() {

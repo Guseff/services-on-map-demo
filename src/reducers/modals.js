@@ -3,6 +3,7 @@ import {
   SHOW_ACCEPT,
   SHOW_APPROVE,
   SHOW_NOT_LOGIN,
+  SHOW_USER_MODAL,
 } from '../constants/constants';
 
 const initialState = {
@@ -28,6 +29,9 @@ export default function modals(state = initialState, action) {
 
     case SHOW_NOT_LOGIN:
       return { ...state, showNotLoginMod_b: action.payload };
+
+    case SHOW_USER_MODAL:
+      return { ...state, showUserModal_b: action.payload };
       
     default:
       return state;
