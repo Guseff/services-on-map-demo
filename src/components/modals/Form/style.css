@@ -59,7 +59,7 @@ label {
 .triangle-red {
   width: 20px;
   height: 15px;
-  background-image: url('../../assets/triangle-red.png');
+  background-image: url('../../../assets/triangle-red.png');
   z-index: 1001;
   position: absolute;
   top: -15px;

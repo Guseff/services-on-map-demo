@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Form from '../Form';
-import { approveTask } from '../../actions/MarkerActions';
+import { approveTask } from '../../../actions/MarkerActions';
 
 class ApproveForm extends Form {
   constructor(props) {

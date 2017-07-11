@@ -22,11 +22,11 @@ class NotLoginModal extends Component {
   }
 
   render() {
-    const { showNotLoginMod } = this.props;
+    const { showNotLoginMod_b } = this.props;
     return (
       <div>
         <ReactModal 
-          isOpen={showNotLoginMod}
+          isOpen={showNotLoginMod_b}
           contentLabel="Minimal Modal Example"
           className="Modal NotLoginModal"
           overlayClassName="Overlay"

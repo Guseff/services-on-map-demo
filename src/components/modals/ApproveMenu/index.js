@@ -16,11 +16,11 @@ class ApproveMenu extends Component {
   }
 
   render() {
-    const { showApprove, clickedMarker } = this.props;
+    const { showApprove_b, clickedMarker } = this.props;
     return (
       <div>
       <ReactModal 
-        isOpen={showApprove}
+        isOpen={showApprove_b}
         contentLabel="Minimal Modal Example"
         className="Modal ApproveModal"
         overlayClassName="Overlay"

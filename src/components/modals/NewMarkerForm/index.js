@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Form from '../Form';
-import { regNewTask } from '../../actions/MarkerActions';
+import { regNewTask } from '../../../actions/MarkerActions';
 
 class NewMarkerForm extends Form {
   constructor(props) {

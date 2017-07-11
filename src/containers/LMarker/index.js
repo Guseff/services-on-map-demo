@@ -24,6 +24,15 @@ class LMarker extends Component {
     return '';
   }
 
+  renderMarkerText(text) {
+    if (text.length) {
+      return (
+        <span>{text}<br/></span>
+      );
+    }
+    return null;
+  }
+
   render() {
     const { marker } = this.props;
     const iconPath = `./marker-icon${this.getMarkerColor(marker.status)}.png`;
@@ -37,7 +46,7 @@ class LMarker extends Component {
         <Tooltip >
           <span>
             <b>{marker.title}</b><br/>
-            {marker.text}<br/>
+            {this.renderMarkerText(marker.text)}
             Cost ${marker.cost}
           </span>
         </Tooltip>

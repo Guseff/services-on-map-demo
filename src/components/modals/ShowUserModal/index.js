@@ -1,36 +1,38 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
-import NewMarkerForm from '../NewMarkerForm';
 
 import './style.css';
 
-class NewMarkerMenu extends Component {
+class ShowUserModal extends Component {
   constructor() {
     super();
 
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.responseGoogle = this.responseGoogle.bind(this);
   }
 
   handleCloseModal() {
-    this.props.closeModal();
+    this.props.closeShowUser();
   }
 
   render() {
-    const { showModal_b } = this.props;
+    const { showUserModal_b } = this.props;
     return (
       <div>
         <ReactModal 
-          isOpen={showModal_b}
+          isOpen={showUserModal_b}
           contentLabel="Minimal Modal Example"
-          className="Modal"
+          className="Modal NotLoginModal"
           overlayClassName="Overlay"
         >
           <button onClick={this.handleCloseModal}><img alt='' src='blue-close-sm.png' /></button>
-          <NewMarkerForm handleCloseModal={this.handleCloseModal} />
+          <h4>
+            Information about User!
+          </h4>
         </ReactModal>
       </div>
     );
   }
 }
 
-export default NewMarkerMenu;
+export default ShowUserModal;

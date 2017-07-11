@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import LMap from '../../containers/LMap';
-import MapMenu from '../MapMenu';
-import AcceptMenu from '../AcceptMenu';
-import ApproveMenu from '../ApproveMenu';
-import NotLoginModal from '../../components/NotLoginModal';
+import NewMarkerMenu from '../../components/modals/NewMarkerMenu';
+import AcceptMenu from '../../components/modals/AcceptMenu';
+import ApproveMenu from '../../components/modals/ApproveMenu';
+import NotLoginModal from '../../components/modals/NotLoginModal';
+import ShowUserModal from '../../components/modals/ShowUserModal';
 import Footer from '../../components/Footer';
 import {
   clickOnMap,
@@ -29,8 +30,8 @@ import './style.css';
 class App extends Component {
   render() {
     const {
-      markers, userCoords, loggedUser,
-      clickOnMap, showModal, showAccept, showApprove, clickedMarker, showNotLoginMod,
+      markers, userCoords, loggedUser, clickedMarker, clickOnMap, 
+      showModal_b, showAccept_b, showApprove_b, showNotLoginMod_b,
       closeModal, closeAccept, closeApprove, showAcceptForm, closeNotLogin, showNotLogin, loginUser
     } = this.props;
 
@@ -45,10 +46,10 @@ class App extends Component {
           showAcceptForm={showAcceptForm}
           showNotLogin={showNotLogin}
         />
-        <MapMenu closeModal={closeModal} showModal={showModal} />
-        <AcceptMenu closeAccept={closeAccept} showAccept={showAccept} clickedMarker={clickedMarker} />
-        <ApproveMenu closeApprove={closeApprove} showApprove={showApprove} clickedMarker={clickedMarker} />
-        <NotLoginModal closeNotLogin={closeNotLogin} showNotLoginMod={showNotLoginMod} loginUser={loginUser} />
+        <NewMarkerMenu closeModal={closeModal} showModal_b={showModal_b} />
+        <AcceptMenu closeAccept={closeAccept} showAccept_b={showAccept_b} clickedMarker={clickedMarker} />
+        <ApproveMenu closeApprove={closeApprove} showApprove_b={showApprove_b} clickedMarker={clickedMarker} />
+        <NotLoginModal closeNotLogin={closeNotLogin} showNotLoginMod_b={showNotLoginMod_b} loginUser={loginUser} />
         <Footer loggedUser={loggedUser} />
       </div>
     );
@@ -59,13 +60,13 @@ function mapStateToProps(state) {
   return {
     markers: state.markers.markers,
     userCoords: state.map.userCoords,
-    showModal: state.map.showModal,
-    showAccept: state.map.showAccept,
-    showApprove: state.map.showApprove,
-    clickedMarker: state.map.clickedMarker,
+    showModal_b: state.modals.showModal_b,
+    showAccept_b: state.modals.showAccept_b,
+    showApprove_b: state.modals.showApprove_b,
+    clickedMarker: state.modals.clickedMarker,
     showLogMenu: state.login.showLogMenu,
     loggedUser: state.login.loggedUser,
-    showNotLoginMod: state.map.showNotLoginMod,
+    showNotLoginMod_b: state.modals.showNotLoginMod_b,
   };
 }
 
@@ -87,10 +88,10 @@ function mapDispatchToProps(dispatch) {
 App.propTypes = {
   markers: PropTypes.array.isRequired,
   userCoords: PropTypes.array.isRequired,
-  showModal: PropTypes.bool.isRequired,
-  showAccept: PropTypes.bool.isRequired,
-  showApprove: PropTypes.bool.isRequired,
-  showNotLoginMod: PropTypes.bool.isRequired,
+  showModal_b: PropTypes.bool.isRequired,
+  showAccept_b: PropTypes.bool.isRequired,
+  showApprove_b: PropTypes.bool.isRequired,
+  showNotLoginMod_b: PropTypes.bool.isRequired,
   clickedMarker: PropTypes.object.isRequired,
   showLogMenu: PropTypes.bool.isRequired,
   loggedUser: PropTypes.object,
