@@ -55,7 +55,7 @@ class App extends Component {
         <AcceptMenu closeAccept={closeAccept} showAccept_b={showAccept_b} clickedMarker={clickedMarker} />
         <ApproveMenu closeApprove={closeApprove} showApprove_b={showApprove_b} clickedMarker={clickedMarker} />
         <NotLoginModal closeNotLogin={closeNotLogin} showNotLoginMod_b={showNotLoginMod_b} loginUser={loginUser} />
-        <ShowUserModal showUserModal_b={showUserModal_b} showUserModal={showUserModal} closeUserModal={closeUserModal} />
+        <ShowUserModal showUserModal_b={showUserModal_b} closeUserModal={closeUserModal} loggedUser={loggedUser} />
         <Footer loggedUser={loggedUser} />
       </div>
     );

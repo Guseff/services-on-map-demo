@@ -14,20 +14,33 @@ class ShowUserModal extends Component {
     this.props.closeUserModal();
   }
 
+  renderUserInfo(user) {
+    if (!user) return null;
+    return (
+      <div className="info">
+        <img alt='' src={user.photoURL} />
+        <p>Name: <span>{user.name}</span></p>
+        <p>E-mail: <span>{user.email}</span></p>
+        <p>Phone: <span>{user.phone}</span></p>
+      </div>
+    );
+  }
+
   render() {
-    const { showUserModal_b } = this.props;
+    const { showUserModal_b, loggedUser } = this.props;
     return (
       <div>
         <ReactModal 
           isOpen={showUserModal_b}
           contentLabel="Minimal Modal Example"
-          className="Modal NotLoginModal"
+          className="Modal ShowUserModal"
           overlayClassName="Overlay"
         >
           <button onClick={this.handleCloseModal}><img alt='' src='blue-close-sm.png' /></button>
-          <h4>
+          <h3>
             Information about User!
-          </h4>
+          </h3>
+          {this.renderUserInfo(loggedUser)}
         </ReactModal>
       </div>
     );

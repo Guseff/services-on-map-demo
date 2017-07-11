@@ -1,16 +1,15 @@
-.NotLoginModal {
+.ShowUserModal {
     position: absolute;
-    top: 20%;
-    left: 35%;
-    right: 35%;
+    top: 30%;
+    left: 25%;
+    right: 25%;
     bottom: 40%;
   }
-.NotLoginModal h4 {
-  margin: 80px 60px;
+.ShowUserModal h3 {
+  margin: 30px 60px;
   text-align: center;
-  line-height: 3;
 }
-.NotLoginModal .close-button {
+.ShowUserModal .close-button {
   margin: 60px auto;
   border: none;
   background: #54ACD2;
@@ -23,23 +22,18 @@
   float: none;
   border-radius: 5px;
 }
-
-.NotLoginModal .google-btn {
-  float: none;
-  width: 191px;
-  height: 46px;
-  background: transparent ;
-  margin: 0 auto;
-  padding: 0;
-  border: none;
-  background-image: url('../../../assets/btn_google_signin_dark_normal_web.png');
-  cursor: pointer;
-  outline: none;
-  display: block;
+.ShowUserModal .info {
+  margin: 20px 40px;
+  font-size: 18px;
+  font-style: italic;
 }
-.NotLoginModal .google-btn:active {
-  background-image: url('../../../assets/btn_google_signin_dark_pressed_web.png');
+.ShowUserModal .info img {
+  width: 96px;
+  border-radius: 96px;
+  margin: 0 40px 120px 0;
+  float: left;
 }
-.NotLoginModal .google-btn:focus {
-  background-image: url('../../../assets/btn_google_signin_dark_focus_web.png');
+.ShowUserModal .info span {
+  font-size: 21px;
+  font-style: normal;
 }
