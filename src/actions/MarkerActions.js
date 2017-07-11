@@ -1,13 +1,15 @@
 import { getPosition } from 'redux-effects-geolocation';
 import {
+  showModal,
+  closeModal,
+  closeAccept,
+  closeApprove,
+} from './ModalActions';
+import {
   GET_MARKERS,
   GET_USER_COORDS,
   PUT_CLICK_COORDS,
-  SHOW_MODAL,
-  SHOW_ACCEPT,
-  SHOW_APPROVE,
   SHOW_LOG_MENU,
-  SHOW_NOT_LOGIN,
 } from '../constants/constants';
 
 const markersURL = 'http://localhost:3001/markers/';
@@ -75,65 +77,12 @@ export function putClickCoords(param) {
     });
 }
 
-export function showModal() {
-  return dispatch =>
-    dispatch({
-      type: SHOW_MODAL,
-      payload: true,
-    });
-}
-
-export function showAcceptForm(marker) {
-  if (marker.status === 1) {
-    return dispatch =>
-      dispatch({
-        type: SHOW_ACCEPT,
-        payload: true,
-        clickedMarker: marker,
-      });
-  }
-  return dispatch =>
-    dispatch({
-      type: SHOW_APPROVE,
-      payload: true,
-      clickedMarker: marker,
-    });
-}
-
-export function closeModal() {
-  return dispatch =>
-    dispatch({
-      type: SHOW_MODAL,
-      payload: false,
-    });
-}
-
-export function closeApprove() {
-  return dispatch =>
-    dispatch({
-      type: SHOW_APPROVE,
-      payload: false,
-      clickedMarker: {},
-    });
-}
-
-export function closeAccept() {
-  return dispatch =>
-    dispatch({
-      type: SHOW_ACCEPT,
-      payload: false,
-      clickedMarker: {},
-    });
-}
-
 export function clickOnMap(param) {
   return dispatch => {
     dispatch(putClickCoords(param));
     dispatch(showModal());
   };
 }
-
-
 
 export function changePhoneNumber(id, num) {
   console.log('changePhoneNumber');
@@ -215,22 +164,6 @@ export function closeLoginMenu() {
   return dispatch =>
     dispatch({
       type: SHOW_LOG_MENU,
-      payload: false,
-    });
-}
-
-export function showNotLogin() {
-  return dispatch =>
-    dispatch({
-      type: SHOW_NOT_LOGIN,
-      payload: true,
-    });
-}
-
-export function closeNotLogin() {
-  return dispatch =>
-    dispatch({
-      type: SHOW_NOT_LOGIN,
       payload: false,
     });
 }

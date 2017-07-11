@@ -12,14 +12,16 @@ import ShowUserModal from '../../components/modals/ShowUserModal';
 import Footer from '../../components/Footer';
 import {
   clickOnMap,
+  closeLoginMenu,
+} from '../../actions/MarkerActions';
+import {
+  showAcceptForm,
+  showNotLogin,
   closeModal,
   closeAccept,
   closeApprove,
-  showAcceptForm,
-  closeLoginMenu,
   closeNotLogin,
-  showNotLogin,
-} from '../../actions/MarkerActions';
+} from '../../actions/ModalActions';
 import {
   logOutUser,
   loginUser,
