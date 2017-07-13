@@ -9,6 +9,7 @@ import AcceptMenu from '../../components/modals/AcceptMenu';
 import ApproveMenu from '../../components/modals/ApproveMenu';
 import NotLoginModal from '../../components/modals/NotLoginModal';
 import ShowUserModal from '../../components/modals/ShowUserModal';
+import EditUserModal from '../../components/modals/EditUserModal';
 import Footer from '../../components/Footer';
 import {
   clickOnMap,
@@ -18,11 +19,13 @@ import {
   showAcceptForm,
   showNotLogin,
   showUserModal,
+  showEditUser,
   closeModal,
   closeAccept,
   closeApprove,
   closeNotLogin,
   closeUserModal,
+  closeEditUser,
 } from '../../actions/ModalActions';
 import {
   logOutUser,
@@ -35,9 +38,9 @@ class App extends Component {
   render() {
     const {
       markers, userCoords, loggedUser, clickedMarker, clickOnMap, 
-      showModal_b, showAccept_b, showApprove_b, showNotLoginMod_b, showUserModal_b,
+      showModal_b, showAccept_b, showApprove_b, showNotLoginMod_b, showUserModal_b, editUserModal_b,
       closeModal, closeAccept, closeApprove, showAcceptForm, closeNotLogin, showNotLogin, loginUser,
-      showUserModal, closeUserModal,
+      showUserModal, closeUserModal, closeEditUser,
     } = this.props;
 
     return (
@@ -56,6 +59,7 @@ class App extends Component {
         <ApproveMenu closeApprove={closeApprove} showApprove_b={showApprove_b} clickedMarker={clickedMarker} />
         <NotLoginModal closeNotLogin={closeNotLogin} showNotLoginMod_b={showNotLoginMod_b} loginUser={loginUser} />
         <ShowUserModal showUserModal_b={showUserModal_b} closeUserModal={closeUserModal} loggedUser={loggedUser} />
+        <EditUserModal editUserModal_b={editUserModal_b} closeEditUser={closeEditUser} loggedUser={loggedUser} />
         <Footer loggedUser={loggedUser} />
       </div>
     );
@@ -74,6 +78,7 @@ function mapStateToProps(state) {
     loggedUser: state.login.loggedUser,
     showNotLoginMod_b: state.modals.showNotLoginMod_b,
     showUserModal_b: state.modals.showUserModal_b,
+    editUserModal_b: state.modals.editUserModal_b,
   };
 }
 
@@ -91,6 +96,7 @@ function mapDispatchToProps(dispatch) {
     showNotLogin: bindActionCreators(showNotLogin, dispatch),
     showUserModal: bindActionCreators(showUserModal, dispatch),
     closeUserModal: bindActionCreators(closeUserModal, dispatch),
+    closeEditUser: bindActionCreators(closeEditUser, dispatch),
   };
 }
 
@@ -116,6 +122,7 @@ App.propTypes = {
   showNotLogin: PropTypes.func.isRequired,
   closeUserModal: PropTypes.func.isRequired,
   showUserModal: PropTypes.func.isRequired,
+  closeEditUser: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

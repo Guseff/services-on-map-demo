@@ -38,7 +38,7 @@ class ShowUserModal extends Component {
         >
           <button onClick={this.handleCloseModal}><img alt='' src='blue-close-sm.png' /></button>
           <h3>
-            Information about User!
+            Information about User
           </h3>
           {this.renderUserInfo(loggedUser)}
         </ReactModal>

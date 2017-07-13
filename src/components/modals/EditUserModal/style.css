@@ -1,0 +1,39 @@
+.EditUserModal {
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    right: 25%;
+    bottom: 40%;
+  }
+.EditUserModal h3 {
+  margin: 30px 60px;
+  text-align: center;
+}
+.EditUserModal .close-button {
+  margin: 60px auto;
+  border: none;
+  background: #54ACD2;
+  color: white;
+  height: 32px;
+  width: 160px;
+  font-size: 14px;
+  cursor: pointer;
+  display: block;
+  float: none;
+  border-radius: 5px;
+}
+.EditUserModal .info {
+  margin: 20px 40px;
+  font-size: 18px;
+  font-style: italic;
+}
+.EditUserModal .info img {
+  width: 96px;
+  border-radius: 96px;
+  margin: 0 40px 120px 0;
+  float: left;
+}
+.EditUserModal .info span {
+  font-size: 21px;
+  font-style: normal;
+}

@@ -4,6 +4,7 @@ import {
   SHOW_APPROVE,
   SHOW_NOT_LOGIN,
   SHOW_USER_MODAL,
+  EDIT_USER_MODAL,
 } from '../constants/constants';
 
 // modal for click on map (not on Marker)
@@ -86,6 +87,22 @@ export function closeUserModal() {
   return dispatch =>
     dispatch({
       type: SHOW_USER_MODAL,
+      payload: false,
+    });
+}
+
+export function showEditUser() {
+  return dispatch =>
+    dispatch({
+      type: EDIT_USER_MODAL,
+      payload: true,
+    });
+}
+
+export function closeEditUser() {
+  return dispatch =>
+    dispatch({
+      type: EDIT_USER_MODAL,
       payload: false,
     });
 }

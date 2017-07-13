@@ -4,6 +4,7 @@ import {
   SHOW_APPROVE,
   SHOW_NOT_LOGIN,
   SHOW_USER_MODAL,
+  EDIT_USER_MODAL,
 } from '../constants/constants';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   showApprove_b: false,
   showNotLoginMod_b: false,
   showUserModal_b: false,
+  editUserModal_b: false,
   clickedMarker: {},
 };
 
@@ -32,6 +34,9 @@ export default function modals(state = initialState, action) {
 
     case SHOW_USER_MODAL:
       return { ...state, showUserModal_b: action.payload };
+
+    case EDIT_USER_MODAL:
+      return { ...state, editUserModal_b: action.payload };
       
     default:
       return state;
