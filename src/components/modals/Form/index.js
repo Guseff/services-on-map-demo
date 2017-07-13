@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 import './style.css';
 
@@ -14,6 +14,7 @@ class Form extends Component {
       err: {
         name: false,
         title: false,
+        phone: false,
       },
     }
 
@@ -24,6 +25,9 @@ class Form extends Component {
     this.formatDate = this.formatDate.bind(this);
     this.nameCheck = this.nameCheck.bind(this);
     this.titleCheck = this.titleCheck.bind(this);
+    this.phoneCheck = this.phoneCheck.bind(this);
+    this.phoneChange = this.phoneChange.bind(this);
+    this.renderErrMessage = this.renderErrMessage.bind(this);
   }
 
   // Functions for change and display text inside input fields
@@ -41,6 +45,14 @@ class Form extends Component {
         {title: false},
       )});
   }
+  phoneChange(e) {
+    this.setState({inpText: e.target.value});
+    this.setState({err: Object.assign(
+        this.state.err,
+        {phone: false},
+      )});
+  }
+
   textChange(e) {
     this.setState({inpText: e.target.value});
   }
@@ -71,6 +83,16 @@ class Form extends Component {
     }
     return false;
   }
+  phoneCheck() {
+    if (this.state.inpTitle.length < 12) {
+      this.setState({err: Object.assign(
+        this.state.err,
+        {phone: true},
+      )})
+      return true;
+    }
+    return false;
+  }
   
   // function for correct Date showing 
   formatDate(date) {
@@ -86,6 +108,17 @@ class Form extends Component {
     return dd + '.' + mm + '.' + yy;
   }
 
+  renderErrMessage(err) {
+    if (err) {
+      return (
+        <div className="err-message">
+          <div className="triangle-red"></div>
+          This field must contain at least three characters.
+        </div>
+      );
+    }
+    return null;
+  }
 }
 
 export default Form;

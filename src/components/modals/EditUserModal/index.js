@@ -12,7 +12,6 @@ class EditUserModal extends Component {
   }
 
   handleCloseModal() {
-    console.log('close edit pressed');
     this.props.closeEditUser();
   }
 

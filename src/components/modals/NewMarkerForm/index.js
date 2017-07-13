@@ -15,7 +15,6 @@ class NewMarkerForm extends Form {
     });
 
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
-    this.renderErrMessage = this.renderErrMessage.bind(this);
   }
 
    handleSubmitForm() {
@@ -29,18 +28,6 @@ class NewMarkerForm extends Form {
       inpText,
       this.props.clickCoords
     );
-  }
-
-  renderErrMessage(err) {
-    if (err) {
-      return (
-        <div className="err-message">
-          <div className="triangle-red"></div>
-          This field must contain at least three characters.
-        </div>
-      );
-    }
-    return null;
   }
 
   render() {

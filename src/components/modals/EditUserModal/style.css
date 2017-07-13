@@ -1,9 +1,9 @@
 .EditUserModal {
     position: absolute;
-    top: 30%;
-    left: 25%;
-    right: 25%;
-    bottom: 40%;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    bottom: 30%;
   }
 .EditUserModal h3 {
   margin: 30px 60px;
