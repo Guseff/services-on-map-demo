@@ -5,7 +5,11 @@ import {
   SHOW_NOT_LOGIN,
   SHOW_USER_MODAL,
   EDIT_USER_MODAL,
+  FIND_OFFERER,
+  ERASE_OFFERER,
 } from '../constants/constants';
+
+const offererURL = 'http://localhost:3001/offerer/';
 
 // modal for click on map (not on Marker)
 export function showModal() {
@@ -91,6 +95,7 @@ export function closeUserModal() {
     });
 }
 
+// modal for edit user information
 export function showEditUser() {
   return dispatch =>
     dispatch({
@@ -104,5 +109,31 @@ export function closeEditUser() {
     dispatch({
       type: EDIT_USER_MODAL,
       payload: false,
+    });
+}
+
+export function findOfferer(ID) {
+  const url = offererURL + localStorage.getItem('token');
+  const body = {
+    user_id: ID,
+  }
+
+  return dispatch =>
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      ...(Object.keys(body).length ? { body: JSON.stringify(body) } : {}),
+    })
+    .then(resp => resp.json())
+    .then((resp) => {
+      console.log(resp);
+      return dispatch =>
+        dispatch({
+          type: FIND_OFFERER,
+          payload: resp,
+        })
     });
 }

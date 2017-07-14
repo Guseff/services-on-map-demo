@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 // get marker list
 app.get('/markers', (req, res) => MarkerModel.find((err, markers) => {
   if (!err) {
-    console.log('Well Done!');
+    console.log('Markers List Sended!');
     return res.send(markers); // json
   }
   res.statusCode = 500;
@@ -119,24 +119,6 @@ app.get('/users/:token', (req, res) => {
     return res.send(user);
   })
 });
-// app.get('/users/:token', (req, res) => {
-//   const user = jwt.verify(req.params.token, privateKey);
-//   console.log('check', user.name);
-//   UsersModel.findOne(
-//     {name: user.name},
-//     (err, user) => {
-//       if (!user) {
-//         return res.send({ status: 404, user: '' });
-//       }
-//       if (!err) {
-//         return res.send({ status: 200, name: user.name });
-//       }
-//       console.log('Internal error(%d): %s', res.statusCode, err.message);
-//       return res.send({ status: 500, error: 'Server error' });
-//     }
-//   );
-// });
-
 
 // Get user or Create new if no such user
 app.post('/users', (req, res) => {
@@ -231,7 +213,30 @@ app.delete('/users/:id', (req, res) => UserModel.findById(req.params.id, (err, m
   });
 }));
 
+// Offers
+// Get offer
+app.post('/offerer/:token', (req, res) => {
+  // Check User Rights
+  const user = jwt.verify(req.params.token, privateKey);
+  console.log('User decoded:', user.user._id);
 
+  UserModel.findById(user.user._id, (err, user) => {
+    if (!user) {
+      res.statusCode = 404;
+      return res.send({ error: 'Not found' });
+    }
+    console.log('User rights approved:', user.name);
+    // Find offer by ID
+    UserModel.findById(req.body.user_id, (err, user) => {
+      if (!user) {
+        res.statusCode = 404;
+        return res.send({ error: 'Not found' });
+      }
+      console.log('Offer:', user.name);
+      return res.send(user);
+    })
+  })
+});
 
 // All others
 app.get('*', (req, res) => {

@@ -5,6 +5,8 @@ import {
   SHOW_NOT_LOGIN,
   SHOW_USER_MODAL,
   EDIT_USER_MODAL,
+  FIND_OFFERER,
+  ERASE_OFFERER,
 } from '../constants/constants';
 
 const initialState = {
@@ -15,6 +17,7 @@ const initialState = {
   showUserModal_b: false,
   editUserModal_b: false,
   clickedMarker: {},
+  seeUser: null,
 };
 
 export default function modals(state = initialState, action) {
@@ -37,7 +40,15 @@ export default function modals(state = initialState, action) {
 
     case EDIT_USER_MODAL:
       return { ...state, editUserModal_b: action.payload };
-      
+
+    case FIND_OFFERER: {
+      console.log('jjj');
+      return { ...state, seeUser: action.payload };
+    }
+
+    case ERASE_OFFERER:
+      return { ...state, seeUser: null };
+
     default:
       return state;
   }

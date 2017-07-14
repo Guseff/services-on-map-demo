@@ -18,3 +18,5 @@ export const SHOW_NOT_LOGIN = 'SHOW_NOT_LOGIN';
 export const NO_LOGIN = 'NO_LOGIN';
 export const SHOW_USER_MODAL = 'SHOW_USER_MODAL';
 export const EDIT_USER_MODAL = 'EDIT_USER_MODAL';
+export const FIND_OFFERER = 'FIND_OFFERER';
+export const ERASE_OFFERER = 'ERASE_OFFERER';

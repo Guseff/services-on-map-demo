@@ -27,7 +27,7 @@ class ShowUserModal extends Component {
   }
 
   render() {
-    const { showUserModal_b, loggedUser } = this.props;
+    const { showUserModal_b, seeUser } = this.props;
     return (
       <div>
         <ReactModal 
@@ -40,7 +40,7 @@ class ShowUserModal extends Component {
           <h3>
             Information about User
           </h3>
-          {this.renderUserInfo(loggedUser)}
+          {this.renderUserInfo(seeUser)}
         </ReactModal>
       </div>
     );

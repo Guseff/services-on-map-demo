@@ -39,7 +39,7 @@ class App extends Component {
     const {
       markers, userCoords, loggedUser, clickedMarker, clickOnMap, 
       showModal_b, showAccept_b, showApprove_b, showNotLoginMod_b, showUserModal_b, editUserModal_b,
-      closeModal, closeAccept, closeApprove, showAcceptForm, closeNotLogin, showNotLogin, loginUser,
+      closeModal, closeAccept, closeApprove, showAcceptForm, closeNotLogin, showNotLogin, loginUser, seeUser,
       showUserModal, closeUserModal, closeEditUser,
     } = this.props;
 
@@ -58,7 +58,7 @@ class App extends Component {
         <AcceptMenu closeAccept={closeAccept} showAccept_b={showAccept_b} clickedMarker={clickedMarker} />
         <ApproveMenu closeApprove={closeApprove} showApprove_b={showApprove_b} clickedMarker={clickedMarker} />
         <NotLoginModal closeNotLogin={closeNotLogin} showNotLoginMod_b={showNotLoginMod_b} loginUser={loginUser} />
-        <ShowUserModal showUserModal_b={showUserModal_b} closeUserModal={closeUserModal} loggedUser={loggedUser} />
+        <ShowUserModal showUserModal_b={showUserModal_b} closeUserModal={closeUserModal} seeUser={seeUser} />
         <EditUserModal editUserModal_b={editUserModal_b} closeEditUser={closeEditUser} loggedUser={loggedUser} />
         <Footer loggedUser={loggedUser} />
       </div>
@@ -79,6 +79,7 @@ function mapStateToProps(state) {
     showNotLoginMod_b: state.modals.showNotLoginMod_b,
     showUserModal_b: state.modals.showUserModal_b,
     editUserModal_b: state.modals.editUserModal_b,
+    seeUser: state.modals.seeUser,
   };
 }
 
@@ -111,6 +112,7 @@ App.propTypes = {
   clickedMarker: PropTypes.object.isRequired,
   showLogMenu: PropTypes.bool.isRequired,
   loggedUser: PropTypes.object,
+  seeUser: PropTypes.object,
 
   clickOnMap: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import Form from '../Form';
 import { acceptTask, changePhoneNumber } from '../../../actions/MarkerActions';
+import { findOfferer } from '../../../actions/ModalActions';
 
 import './style.css';
 
@@ -18,6 +19,7 @@ class AcceptForm extends Form {
     });
 
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
+    this.handleSeeProfile = this.handleSeeProfile.bind(this);
   }
 
   handleSubmitForm() {
@@ -35,6 +37,12 @@ class AcceptForm extends Form {
       this.state.inpTitle
     );
   }
+
+  handleSeeProfile(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.findOfferer(this.props.clickedMarker.author_id);
+  }
   
   render() {
     const { clickedMarker, handleCloseModal } = this.props;
@@ -44,7 +52,7 @@ class AcceptForm extends Form {
         <h2>Offer details:</h2>
         <div>
           <b>Title:</b> {clickedMarker.title}<br/>
-          <b>Offered by:</b> {clickedMarker.author}<br/>
+          <b>Offered by:</b> {clickedMarker.author} <button className='frofile-a' onClick={this.handleSeeProfile}>See Profile...</button><br/>
           <b>Description:</b> {clickedMarker.text}<br/>
           <b>Data:</b> {this.formatDate(clickedMarker.modified)}
         </div>
@@ -99,14 +107,17 @@ function mapDispatchToProps(dispatch) {
   return {
     acceptTask: bindActionCreators(acceptTask, dispatch),
     changePhoneNumber: bindActionCreators(changePhoneNumber, dispatch),
+    findOfferer: bindActionCreators(findOfferer, dispatch),
   };
 }
 
 AcceptForm.propTypes = {
   clickCoords: PropTypes.array.isRequired,
   loggedUser: PropTypes.object.isRequired,
+
   acceptTask: PropTypes.func.isRequired,
   changePhoneNumber: PropTypes.func.isRequired,
+  findOfferer: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AcceptForm);

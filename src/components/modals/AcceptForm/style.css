@@ -1,0 +1,12 @@
+.Modal .frofile-a {
+  width: auto;
+  height: auto;
+  float: none;
+  text-decoration: underline;
+  color: #54ACD2;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
