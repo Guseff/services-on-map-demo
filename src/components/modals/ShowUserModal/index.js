@@ -11,6 +11,7 @@ class ShowUserModal extends Component {
   }
 
   handleCloseModal() {
+    this.props.eraseOfferer();
     this.props.closeUserModal();
   }
 

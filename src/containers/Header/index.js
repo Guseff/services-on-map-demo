@@ -17,6 +17,7 @@ import {
 import {
   showUserModal,
   showEditUser,
+  findOfferer,
 } from '../../actions/ModalActions';
 
 import './style.css';
@@ -63,7 +64,7 @@ class Header extends Component {
   render() {
     const {
       showLogMenu, loggedUser,
-      closeLoginMenu, logOutUser, loginUser, showUserModal, showEditUser,
+      closeLoginMenu, logOutUser, loginUser, showUserModal, showEditUser, findOfferer,
     } = this.props;
     return (
       <div className="head">
@@ -88,6 +89,7 @@ class Header extends Component {
           loginUser={loginUser} 
           showUserModal={showUserModal}
           showEditUser={showEditUser}
+          findOfferer={findOfferer}
         />
       </div>
     );
@@ -110,6 +112,7 @@ function mapDispatchToProps(dispatch) {
     checkLogin: bindActionCreators(checkLogin, dispatch),
     showUserModal: bindActionCreators(showUserModal, dispatch),
     showEditUser: bindActionCreators(showEditUser, dispatch),
+    findOfferer: bindActionCreators(findOfferer, dispatch),
   };
 }
 
@@ -124,6 +127,7 @@ Header.propTypes = {
   checkLogin: PropTypes.func.isRequired,
   showUserModal: PropTypes.func.isRequired,
   showEditUser: PropTypes.func.isRequired,
+  findOfferer: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

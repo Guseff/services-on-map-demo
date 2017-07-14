@@ -26,6 +26,7 @@ import {
   closeNotLogin,
   closeUserModal,
   closeEditUser,
+  eraseOfferer,
 } from '../../actions/ModalActions';
 import {
   logOutUser,
@@ -40,7 +41,7 @@ class App extends Component {
       markers, userCoords, loggedUser, clickedMarker, clickOnMap, 
       showModal_b, showAccept_b, showApprove_b, showNotLoginMod_b, showUserModal_b, editUserModal_b,
       closeModal, closeAccept, closeApprove, showAcceptForm, closeNotLogin, showNotLogin, loginUser, seeUser,
-      showUserModal, closeUserModal, closeEditUser,
+      showUserModal, closeUserModal, closeEditUser, eraseOfferer,
     } = this.props;
 
     return (
@@ -58,7 +59,7 @@ class App extends Component {
         <AcceptMenu closeAccept={closeAccept} showAccept_b={showAccept_b} clickedMarker={clickedMarker} />
         <ApproveMenu closeApprove={closeApprove} showApprove_b={showApprove_b} clickedMarker={clickedMarker} />
         <NotLoginModal closeNotLogin={closeNotLogin} showNotLoginMod_b={showNotLoginMod_b} loginUser={loginUser} />
-        <ShowUserModal showUserModal_b={showUserModal_b} closeUserModal={closeUserModal} seeUser={seeUser} />
+        <ShowUserModal showUserModal_b={showUserModal_b} closeUserModal={closeUserModal} seeUser={seeUser} eraseOfferer={eraseOfferer} />
         <EditUserModal editUserModal_b={editUserModal_b} closeEditUser={closeEditUser} loggedUser={loggedUser} />
         <Footer loggedUser={loggedUser} />
       </div>
@@ -98,6 +99,7 @@ function mapDispatchToProps(dispatch) {
     showUserModal: bindActionCreators(showUserModal, dispatch),
     closeUserModal: bindActionCreators(closeUserModal, dispatch),
     closeEditUser: bindActionCreators(closeEditUser, dispatch),
+    eraseOfferer: bindActionCreators(eraseOfferer, dispatch),
   };
 }
 
@@ -125,6 +127,7 @@ App.propTypes = {
   closeUserModal: PropTypes.func.isRequired,
   showUserModal: PropTypes.func.isRequired,
   closeEditUser: PropTypes.func.isRequired,
+  eraseOfferer: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

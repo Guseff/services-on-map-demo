@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import Form from '../Form';
 import { acceptTask, changePhoneNumber } from '../../../actions/MarkerActions';
-import { findOfferer } from '../../../actions/ModalActions';
+import { findOfferer, showUserModal } from '../../../actions/ModalActions';
 
 import './style.css';
 
@@ -42,6 +42,7 @@ class AcceptForm extends Form {
     e.preventDefault();
     e.stopPropagation();
     this.props.findOfferer(this.props.clickedMarker.author_id);
+    this.props.showUserModal();
   }
   
   render() {
@@ -108,6 +109,7 @@ function mapDispatchToProps(dispatch) {
     acceptTask: bindActionCreators(acceptTask, dispatch),
     changePhoneNumber: bindActionCreators(changePhoneNumber, dispatch),
     findOfferer: bindActionCreators(findOfferer, dispatch),
+    showUserModal: bindActionCreators(showUserModal, dispatch),
   };
 }
 
@@ -118,6 +120,7 @@ AcceptForm.propTypes = {
   acceptTask: PropTypes.func.isRequired,
   changePhoneNumber: PropTypes.func.isRequired,
   findOfferer: PropTypes.func.isRequired,
+  showUserModal: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AcceptForm);

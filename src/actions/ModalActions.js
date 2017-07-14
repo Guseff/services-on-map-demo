@@ -79,6 +79,13 @@ export function closeNotLogin() {
     });
 }
 
+export function eraseOfferer() {
+  return dispatch =>
+    dispatch({
+      type: ERASE_OFFERER,
+    });
+}
+
 // modal for user information
 export function showUserModal() {
   return dispatch =>
@@ -129,11 +136,9 @@ export function findOfferer(ID) {
     })
     .then(resp => resp.json())
     .then((resp) => {
-      console.log(resp);
-      return dispatch =>
-        dispatch({
-          type: FIND_OFFERER,
-          payload: resp,
-        })
+      dispatch({
+        type: FIND_OFFERER,
+        payload: resp,
+      });
     });
 }

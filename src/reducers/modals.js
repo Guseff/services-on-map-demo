@@ -41,10 +41,8 @@ export default function modals(state = initialState, action) {
     case EDIT_USER_MODAL:
       return { ...state, editUserModal_b: action.payload };
 
-    case FIND_OFFERER: {
-      console.log('jjj');
+    case FIND_OFFERER:
       return { ...state, seeUser: action.payload };
-    }
 
     case ERASE_OFFERER:
       return { ...state, seeUser: null };

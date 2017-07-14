@@ -30,6 +30,7 @@ class LoginMenu extends Component {
   }
 
   handleUserModal() {
+    this.props.findOfferer(this.props.loggedUser._id);
     this.props.showUserModal();
   }
 
