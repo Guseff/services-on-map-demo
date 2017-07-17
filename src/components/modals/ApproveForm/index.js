@@ -5,12 +5,21 @@ import PropTypes from 'prop-types';
 
 import Form from '../Form';
 import { approveTask } from '../../../actions/MarkerActions';
+import { findOfferer, showUserModal } from '../../../actions/ModalActions';
 
 class ApproveForm extends Form {
   constructor(props) {
     super(props);
 
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
+    this.handleSeeProfile = this.handleSeeProfile.bind(this);
+  }
+
+  handleSeeProfile(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.findOfferer(this.props.clickedMarker.exec_id);
+    this.props.showUserModal();
   }
 
   handleSubmitForm() {
@@ -34,7 +43,7 @@ class ApproveForm extends Form {
         </div>
         <h2>Accept details:</h2>
         <div>
-          <b>Acceptor:</b> {clickedMarker.executor}<br/>
+          <b>Acceptor:</b> {clickedMarker.executor} <button className='frofile-a' onClick={this.handleSeeProfile}>See Profile...</button><br/>
           <b>Phone:</b> {clickedMarker.exec_phone}<br/>
           <b>Description:</b> {clickedMarker.exec_text}<br/>
         </div>
@@ -57,12 +66,16 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     approveTask: bindActionCreators(approveTask, dispatch),
+    findOfferer: bindActionCreators(findOfferer, dispatch),
+    showUserModal: bindActionCreators(showUserModal, dispatch),
   };
 }
 
 ApproveForm.propTypes = {
   clickCoords: PropTypes.array.isRequired,
   approveTask: PropTypes.func.isRequired,
+  findOfferer: PropTypes.func.isRequired,
+  showUserModal: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ApproveForm);

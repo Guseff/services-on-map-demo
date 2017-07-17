@@ -19,7 +19,6 @@ import {
   showAcceptForm,
   showNotLogin,
   showUserModal,
-  showEditUser,
   closeModal,
   closeAccept,
   closeApprove,
@@ -41,7 +40,7 @@ class App extends Component {
       markers, userCoords, loggedUser, clickedMarker, clickOnMap, 
       showModal_b, showAccept_b, showApprove_b, showNotLoginMod_b, showUserModal_b, editUserModal_b,
       closeModal, closeAccept, closeApprove, showAcceptForm, closeNotLogin, showNotLogin, loginUser, seeUser,
-      showUserModal, closeUserModal, closeEditUser, eraseOfferer,
+      closeUserModal, closeEditUser, eraseOfferer,
     } = this.props;
 
     return (
