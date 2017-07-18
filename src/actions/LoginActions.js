@@ -49,7 +49,8 @@ export function logOutUser() {
   }
 }
 
-export function checkLogin(token) {
+export function checkLogin() {
+  const token = localStorage.getItem('token');
   const url = usersURL + token;
 
   return dispatch => {

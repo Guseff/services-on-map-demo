@@ -165,9 +165,13 @@ app.post('/users', (req, res) => {
 });
 
 // Update user
-app.put('/users/:id', (req, res) =>
-  UserModel.findById(req.params.id, (err, user) => {
+app.put('/users/:token', (req, res) => {
+  const user = jwt.verify(req.params.token, privateKey);
+  console.log('User decoded:', user.user._id);
+
+  UserModel.findById(user.user._id, (err, user) => {
     if (!user) {
+      console.log('Not found');
       res.statusCode = 404;
       return res.send({ error: 'Not found' });
     }
@@ -182,7 +186,7 @@ app.put('/users/:id', (req, res) =>
     return newUser.save((err) => {
       if (!err) {
         console.log('user updated');
-        return res.send({ status: 'OK', user });
+        return res.send({ status: 'OK' });
       }
       if (err.name == 'ValidationError') {
         res.statusCode = 400;
@@ -193,8 +197,8 @@ app.put('/users/:id', (req, res) =>
       }
       console.log('Internal error(%d): %s', res.statusCode, err.message);
     });
-  }
-));
+  });
+});
 
 // Delete user
 app.delete('/users/:id', (req, res) => UserModel.findById(req.params.id, (err, marker) => {

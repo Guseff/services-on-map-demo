@@ -59,7 +59,7 @@ class App extends Component {
         <ApproveMenu closeApprove={closeApprove} showApprove_b={showApprove_b} clickedMarker={clickedMarker} />
         <NotLoginModal closeNotLogin={closeNotLogin} showNotLoginMod_b={showNotLoginMod_b} loginUser={loginUser} />
         <ShowUserModal showUserModal_b={showUserModal_b} closeUserModal={closeUserModal} seeUser={seeUser} eraseOfferer={eraseOfferer} />
-        <EditUserModal editUserModal_b={editUserModal_b} closeEditUser={closeEditUser} loggedUser={loggedUser} />
+        <EditUserModal editUserModal_b={editUserModal_b} closeEditUser={closeEditUser} />
         <Footer loggedUser={loggedUser} />
       </div>
     );

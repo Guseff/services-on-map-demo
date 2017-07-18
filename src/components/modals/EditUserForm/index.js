@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Form from '../Form';
-import {  } from '../../../actions/ModalActions';
+import { editUserInfo } from '../../../actions/MarkerActions';
 
 class EditUserForm extends Form {
   constructor(props) {
@@ -20,12 +20,13 @@ class EditUserForm extends Form {
   }
 
   handleSubmitForm() {
-
+    const { inpName, inpTitle, inpText } = this.state;
+    this.props.editUserInfo(inpName, inpTitle, inpText);
   }
 
   render() {
     const { handleCloseModal, loggedUser } = this.props;
-    const { inpName, inpTitle, inpNum, inpText, err } = this.state;
+    const { inpName, inpTitle, inpText, err } = this.state;
     return (
       <form>
         <h2>Edit Your Information, {loggedUser.name}:</h2>
@@ -47,7 +48,7 @@ class EditUserForm extends Form {
           <label>
             E-mail:<br/>
             <input
-              className={(err.name ? 'red' : '')}
+              className={(err.title ? 'red' : '')}
               type="text"
               name="email"
               value={inpTitle} 
@@ -89,11 +90,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    editUserInfo: bindActionCreators(editUserInfo, dispatch),
   };
 }
 
 EditUserForm.propTypes = {
   loggedUser: PropTypes.object.isRequired,
+
+  editUserInfo: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditUserForm);

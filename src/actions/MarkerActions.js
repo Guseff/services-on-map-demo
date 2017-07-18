@@ -4,7 +4,11 @@ import {
   closeModal,
   closeAccept,
   closeApprove,
+  closeEditUser,
 } from './ModalActions';
+import {
+  checkLogin,
+} from './LoginActions';
 import {
   GET_MARKERS,
   GET_USER_COORDS,
@@ -84,10 +88,13 @@ export function clickOnMap(param) {
   };
 }
 
-export function changePhoneNumber(id, num) {
-  console.log('changePhoneNumber');
-  const url = usersURL + id;
-  const body = {phone: num};
+export function editUserInfo(name, email, phone) {
+  const url = usersURL + localStorage.getItem('token');
+  const body = {
+    name: name,
+    email: email,
+    phone: phone,
+  };
 
   return dispatch =>
     fetch(url, {
@@ -97,8 +104,11 @@ export function changePhoneNumber(id, num) {
         'Content-Type': 'application/json',
       },
       ...(Object.keys(body).length ? { body: JSON.stringify(body) } : {}),
-    });
+    })
+      .then(() => dispatch(checkLogin()))
+      .then(() => dispatch(closeEditUser()));
 }
+
 
 export function regNewTask(id, name, title, cost, text, coords) {
   return dispatch =>

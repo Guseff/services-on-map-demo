@@ -16,7 +16,7 @@ class EditUserModal extends Component {
   }
 
   render() {
-    const { editUserModal_b, loggedUser } = this.props;
+    const { editUserModal_b } = this.props;
     return (
       <div>
         <ReactModal 
